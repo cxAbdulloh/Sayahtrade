@@ -1,0 +1,74 @@
+.bottom-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: #fff;
+        border-top: 1px solid #ebebeb;
+        z-index: 200;
+        align-items: stretch;
+    }
+
+    .bottom-nav__item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        text-decoration: none;
+        color: #888;
+        font-family: 'Raleway', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        transition: color 0.2s;
+        position: relative;
+    }
+
+    .bottom-nav__item.active {
+        color: #5B2D8E;
+    }
+
+    .bottom-nav__item:hover {
+        color: #5B2D8E;
+    }
+
+    .bottom-nav__icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bottom-nav__badge {
+        position: absolute;
+        top: -5px;
+        right: -8px;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: #5B2D8E;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .bottom-nav__label {
+        line-height: 1;
+    }
+}

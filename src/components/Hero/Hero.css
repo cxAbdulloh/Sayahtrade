@@ -1,0 +1,228 @@
+/* Asosiy sekshn va shrift sozlamalari */
+.saya-hero {
+    overflow: hidden;
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+/* Max-width 1500px qilinib, o'rtaga tekislandi */
+.saya-hero__container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Chap tomon (eski holatiga qaytarildi) */
+.saya-hero__left {
+    flex: 0 0 50%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 40px 80px 80px;
+}
+
+.saya-hero__title {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #1a1a1a;
+    letter-spacing: -1px;
+    max-width: 800px;
+}
+
+.saya-hero__highlight {
+    color: #5B2D8E;
+}
+
+.saya-hero__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #666666;
+    margin: 24px 0 48px;
+    max-width: 600px;
+}
+
+.saya-hero__marquee-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    mask-image: linear-gradient(to right, transparent, #fff 15%, #fff 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #fff 15%, #fff 85%, transparent);
+    padding: 5px 0;
+}
+
+.saya-hero__marquee-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: saya-hero-scroll 30s linear infinite;
+}
+
+.saya-hero__badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f5f4f8;
+    padding: 6px 16px 6px 6px;
+    border-radius: 30px;
+    color: #1a1a1a;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid rgba(91, 45, 142, 0.04);
+    box-sizing: border-box;
+}
+
+.saya-hero__badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(91, 45, 142, 0.06);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    color: #5B2D8E;
+}
+
+.saya-hero__badge-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.2px;
+}
+
+.saya-hero__badge-label {
+    line-height: 1;
+}
+
+@keyframes saya-hero-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.saya-hero__right {
+    flex: 0 0 50%;
+    width: 50%;
+    display: flex;
+    align-self: center;
+    min-height: auto;
+}
+.saya-hero__image-wrapper {
+    position: relative;
+    width: 95%;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.saya-hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+
+.saya-hero__image-wrapper:hover .saya-hero__video {
+    transform: scale(1.03);
+}
+
+.saya-hero__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 68px;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 2;
+}
+
+.saya-hero__play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.saya-hero__play-icon {
+    width: 26px;
+    height: 26px;
+    margin-left: 4px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1200px) {
+    .saya-hero__left {
+        padding: 40px 30px 60px 40px;
+    }
+    .saya-hero__title {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 995px) {
+    .saya-hero__container {
+        flex-direction: column;
+        padding: 0 16px;
+    }
+
+    .saya-hero__left {
+        flex: 0 0 100%;
+        width: 100%;
+        padding: 40px 0;
+    }
+
+    .saya-hero__title {
+        font-size: 38px;
+        text-align: center;
+    }
+
+    .saya-hero__subtitle {
+        text-align: center;
+        margin: 18px auto 32px;
+    }
+
+    .saya-hero__marquee-container {
+        margin: 0 auto;
+    }
+
+    .saya-hero__right {
+        flex: 0 0 100%;
+        width: 100%;
+        height: 400px;
+        min-height: auto;
+    }
+
+    .saya-hero__image-wrapper {
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 568px) {
+    .saya-hero__title {
+        font-size: 28px;
+        text-align: left;
+    }
+
+    .saya-hero__subtitle {
+        text-align: left;
+    }
+
+    .saya-hero__right {
+        height: 280px;
+    }
+}

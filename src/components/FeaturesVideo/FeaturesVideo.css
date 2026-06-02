@@ -1,0 +1,189 @@
+.saya-features {
+    background-color: #f7f7f7;
+    overflow: hidden;
+    border-radius: 30px;
+    max-width: 1500px;
+    margin: 0  16px auto;
+
+}
+
+.saya-features__container {
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Chap va o'ng qism mutanosibligi */
+    gap: 40px;
+    align-items: center;
+}
+
+/* --- CHAP TARKIB --- */
+.saya-features__left {
+    display: flex;
+    flex-direction: column;
+}
+
+.saya-features__title {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #1a1a1a; /* To'q kulrang matn ranglari */
+    margin: 0 0 24px 0;
+    letter-spacing: -0.5px;
+}
+
+.saya-features__subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #555555; /* Kontrast yaxshi bo'lishi uchun biroz to'qroq kulrang */
+    margin: 0 0 32px 0;
+    max-width: 580px;
+}
+
+/* Ro'yxat (List) */
+.saya-features__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.saya-features__list-item {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    position: relative;
+    padding-left: 24px;
+    line-height: 1.4;
+}
+
+/* Rasmdagi yashil rangli list markerlari (Nuqtalar) */
+.saya-features__list-item::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: #72b28c; /* Rasmdagi och yashil nuqta */
+    border-radius: 50%;
+}
+
+/* Konsultatsiya va Tugма qismi (CTA) */
+.saya-features__cta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.saya-features__cta-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+/* Rasmdagi to'q binafsha rangli "Позвонить" tugmasi */
+.saya-features__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #4c0e75; /* Rasmdagi original binafsha */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 30px; /* Apple-style to'liq yumaloq burchak */
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.saya-features__btn:hover {
+    background-color: #3b0a5c;
+    transform: translateY(-1px);
+}
+
+.saya-features__btn-icon {
+    transition: transform 0.2s ease;
+}
+
+.saya-features__btn:hover .saya-features__btn-icon {
+    transform: translateX(3px); /* Hoverda strelka sal o'ngga suriladi */
+}
+
+/* --- O'NG TARKIB (VIDEO) --- */
+.saya-features__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.saya-features__video-wrapper {
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 1 / 1; /* Rasmdagi kvadrat holatni ushlash uchun */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saya-features__video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Tabletkalar chetlari kesilib ketmasligi uchun */
+    /* mix-blend-mode olib tashlandi, endi video o'zining tabiiy kulrang foni bilan chiqadi */
+}
+
+/* --- RESPONSIVE (Mobil moslashuvchanlik) --- */
+@media (max-width: 1024px) {
+    .saya-features__container {
+        grid-template-columns: 1fr; /* Planshetda ustma-ust tushadi */
+        gap: 48px;
+        padding: 0 24px;
+    }
+
+    .saya-features__left {
+        order: 2; /* Video birinchi, matn keyin turishi uchun */
+    }
+
+    .saya-features__right {
+        order: 1;
+    }
+
+    .saya-features__title {
+        font-size: 36px;
+    }
+
+    .saya-features__video-wrapper {
+        max-width: 440px;
+    }
+}
+@media (max-width: 568px) {
+    .saya-features {
+        padding: 48px 0;
+    }
+
+    .saya-features__title {
+        font-size: 28px;
+    }
+
+    .saya-features__subtitle {
+        font-size: 14px;
+    }
+
+    .saya-features__cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .saya-features__btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .saya-features__right {
+        display: none;
+    }
+}

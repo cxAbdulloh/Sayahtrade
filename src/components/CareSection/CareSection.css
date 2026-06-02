@@ -1,0 +1,195 @@
+.saya-care {
+    padding: 80px 0 100px;
+    overflow: hidden;
+}
+
+.saya-care__header {
+    max-width: 1500px;
+    margin: 0 auto 60px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.saya-care__top-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555555;
+    margin: 0 0 16px 0;
+}
+
+.saya-care__title-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 32px;
+    margin-bottom: 20px;
+}
+
+.saya-care__line {
+    flex: 1;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.saya-care__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #1a1a1a;
+    margin: 0;
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+}
+
+.saya-care__highlight {
+    color: #4c0e75;
+}
+
+.saya-care__bottom-text {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #555555;
+    max-width: 900px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.saya-care__marquee-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    position: relative;
+}
+
+.saya-care__marquee-container::before,
+.saya-care__marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/*.saya-care__marquee-container::before {*/
+/*    left: 0;*/
+/*    background: linear-gradient(to right, #ffffff, transparent);*/
+/*}*/
+
+/*.saya-care__marquee-container::after {*/
+/*    right: 0;*/
+/*    background: linear-gradient(to left, #ffffff, transparent);*/
+/*}*/
+
+/* Umumiy karusel liniyasi */
+.saya-care__marquee {
+    width: 100%;
+    overflow: hidden;
+}
+
+.saya-care__marquee-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+}
+
+/* --- ANIMATSIYALAR (CHAPGA VA ONGGA) --- */
+
+/* 1-Qavat: Chapga yurish */
+.saya-care__marquee--left .saya-care__marquee-track {
+    animation: sayaCareScrollLeft 50s linear infinite;
+}
+
+/* 2-Qavat: O'ngga yurish */
+.saya-care__marquee--right .saya-care__marquee-track {
+    animation: sayaCareScrollRight 50s linear infinite;
+}
+
+/* Kapsula kartasi */
+.saya-care__image-card {
+    width: 600px;
+    height: 200px;
+    border-radius: 110px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.saya-care__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.saya-care__image-card:hover .saya-care__img {
+    transform: scale(1.05);
+}
+
+/* Chapga harakat keyframe */
+@keyframes sayaCareScrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+
+/* O'ngga harakat keyframe */
+@keyframes sayaCareScrollRight {
+    0% {
+        transform: translateX(-33.333%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .saya-care__title {
+        font-size: 36px;
+        white-space: normal;
+    }
+    .saya-care__title-wrapper {
+        gap: 16px;
+    }
+    .saya-care__image-card {
+        width: 340px;
+        height: 170px;
+        border-radius: 85px;
+    }
+}
+
+@media (max-width: 768px) {
+    .saya-care {
+        padding: 60px 0;
+    }
+    .saya-care__line {
+        display: none;
+    }
+    .saya-care__title {
+        font-size: 28px;
+    }
+    .saya-care__header {
+        padding: 0 24px;
+        margin-bottom: 40px;
+    }
+    .saya-care__image-card {
+        width: 280px;
+        height: 140px;
+        border-radius: 70px;
+    }
+    .saya-care__marquee-track {
+        gap: 16px;
+    }
+    .saya-care__marquee-container {
+        gap: 16px;
+    }
+}

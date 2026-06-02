@@ -1,0 +1,109 @@
+.saya-about {
+    width: 100%;
+    padding: 80px 0;
+}
+
+.saya-about__container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* --- CHAP TARAF STILI --- */
+.saya-about__left {
+    display: flex;
+    flex-direction: column;
+}
+
+.saya-about__subtitle {
+    color: #999;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.saya-about__title {
+    color: #222;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 32px 0;
+    letter-spacing: -0.5px;
+}
+
+.saya-about__content h3 {
+    color: #333;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.saya-about__content p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+}
+
+.saya-about__content p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- O'NG TARAF (RO'YXAT) STILI --- */
+.saya-about__right {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding-top: 10px;
+}
+
+.saya-about__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.saya-about__icon-wrap {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.saya-about__star {
+    width: 32px;
+    height: 32px;
+    color: #000; /* Rasmda yulduzcha qora rangda */
+}
+
+.saya-about__feature-text h4 {
+    color: #222;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+}
+
+.saya-about__feature-text p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- MOBIL QURILMALAR UCHUN MOSLASHUVCHANLIK (RESPONSIVE) --- */
+@media (max-width: 992px) {
+    .saya-about {
+        padding: 50px 0;
+    }
+    .saya-about__container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 0 16px;
+    }
+    .saya-about__title {
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
+}

@@ -1,0 +1,215 @@
+.consult-wrapper {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 64px 40px;
+}
+
+.consult-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: stretch;
+}
+
+
+.consult-left {
+    position: sticky;
+    top: 40px;
+    height: max-content;
+}
+
+.consult-title {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.consult-title-accent {
+    color: #7B2FBE;
+}
+
+.consult-desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+.consult-icons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+
+.consult-form-group {
+    margin-bottom: 20px;
+}
+
+.consult-form-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.consult-form-group input {
+    width: 100%;
+    padding: 12px 18px;
+    background: #fff;
+    border: none;
+    border-bottom: 1.5px solid #ddd;
+    border-radius: 0;
+    font-size: 15px;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.consult-form-group input:focus {
+    border-bottom-color: #7B2FBE;
+}
+
+.consult-form-group textarea {
+    width: 100%;
+    padding: 16px 18px;
+    background: #f7f7f7;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 16px;
+    font-size: 15px;
+    color: #1a1a1a;
+    outline: none;
+    min-height: 160px;
+    resize: vertical;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.consult-form-group textarea:focus {
+    border-color: #7B2FBE;
+}
+
+.consult-submit {
+    margin-top: 24px;
+}
+
+.consult-submit button {
+    background: #88AD99;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 36px;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.consult-submit button:hover {
+    background: #6b9480;
+}
+
+@media (max-width: 900px) {
+    .consult-wrapper {
+        padding: 40px 20px; /* Ekran kichrayganda chekkadagi padding qisqardi */
+    }
+
+    .consult-grid {
+        grid-template-columns: 1fr; /* Elementlar ustma-ust tushadi */
+        gap: 40px;
+    }
+
+    .consult-left {
+        position: static; /* Mobil qurilmada sticky o'chadi */
+    }
+
+    .consult-title {
+        font-size: 32px; /* Sarlavha mobilga moslab kichraytirildi */
+        margin-bottom: 16px;
+    }
+
+    .consult-desc {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .consult-icons {
+        margin-bottom: 10px; /* Forma bilan oraliq masofa */
+    }
+}
+
+.consult-form-box {
+    /*background: #f5f5f5;*/
+    border-radius: 30px;
+    padding: 28px 24px;
+}
+
+.consult-form-box h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 14px;
+    color: #222;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #999;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-submit {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-submit button {
+    background: #88AD99;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 28px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.form-submit button:hover {
+    background: #333;
+}

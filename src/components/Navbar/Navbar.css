@@ -1,0 +1,569 @@
+.saya-nav {
+    max-width: 1500px;
+    margin: auto;
+
+}
+
+.saya-nav__container {
+    padding: 0 20px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.saya-logo-slot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.saya-logo-slot img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.saya-nav__left {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.saya-nav__btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+    padding: 8px 14px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+
+.saya-search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 10px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.saya-search-btn:hover {
+    color: #5B2D8E;
+}
+
+.saya-cta-btn {
+    padding: 11px 26px;
+    background: #5B2D8E;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(91,45,142,0.25);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.saya-cta-btn:hover {
+    background: #4a2175;
+    box-shadow: 0 4px 18px rgba(91,45,142,0.35);
+}
+
+.saya-dropdown-overlay {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    z-index: 140;
+    padding: 28px 0 32px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.saya-dropdown-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.saya-dropdown-overlay__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.saya-dropdown-overlay__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+}
+
+.saya-dropdown-overlay__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #222;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    line-height: 1.3;
+    transition: background 0.15s, color 0.15s;
+    border: 1px solid transparent;
+}
+
+.saya-dropdown-overlay__item:hover {
+    text-decoration: underline;
+}
+
+.saya-dropdown-overlay__icon {
+    font-size: 30px;
+    flex-shrink: 0;
+    line-height: 1;
+    filter: grayscale(0.2);
+}
+
+.saya-dropdown-overlay__grid--row2 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+.saya-dropdown-overlay::before {
+    content: "";
+    position: absolute;
+    top: -20px; /* Tugma va dropdown orasidagi bo'shliq o'lchamiga qarab (masalan -15px yoki -20px) */
+    left: 0;
+    width: 100%;
+    height: 20px;
+    display: block;
+    background: transparent; /* Ko'rinmas ko'prik */
+}
+.saya-simple-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: #fff;
+
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+    border-radius: 0 0 8px 8px;
+    min-width: 180px;
+    z-index: 140;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.saya-simple-dropdown.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.saya-simple-dropdown a {
+    display: block;
+    padding: 11px 18px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #f2eef9;
+    transition: background 0.15s, color 0.15s;
+}
+
+.saya-simple-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.saya-simple-dropdown a:hover {
+    background: #f7f2fc;
+    color: #5B2D8E;
+}
+
+.saya-dropdown-wrap {
+    position: relative;
+}
+
+.saya-search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(91,45,142,0.82);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 200;
+}
+
+.saya-search-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.saya-search-overlay__inner {
+    width: min(580px, 90vw);
+}
+
+.saya-search-overlay__input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 18px;
+    border: none;
+
+    background: transparent;
+    color: #fff;
+    outline: none;
+
+}
+
+.saya-search-overlay__hint {
+    color: rgba(255,255,255,0.45);
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.saya-hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+}
+
+.saya-hamburger__line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #5B2D8E;
+    border-radius: 2px;
+}
+
+.saya-cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 6px;
+    color: #5B2D8E;
+    display: none;
+    align-items: center;
+}
+
+.saya-cart-btn__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #C9A84C;
+    color: #fff;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saya-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 299;
+}
+
+.saya-mobile-drawer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 80vw;
+    max-width: 320px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 4px 0 24px rgba(91,45,142,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
+    z-index: 300;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.saya-mobile-drawer.open { transform: translateX(0); }
+
+.saya-mobile-drawer__header {
+    padding: 18px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.saya-mobile-drawer__title {
+    color: #5B2D8E;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+.saya-mobile-drawer__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5B2D8E;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.saya-mobile-drawer__nav { padding: 8px 0; flex: 1; }
+
+.saya-mobile-drawer__footer {
+    padding: 18px 22px;
+    border-top: 1px solid #f0eaf8;
+}
+
+
+
+.saya-mobile-item__btn {
+    width: 100%;
+    padding: 13px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #f0eaf8;
+    cursor: pointer;
+    font-size: 14.5px;
+    color: #222;
+    font-weight: 600;
+}
+
+.saya-mobile-item__arrow {
+    font-size: 11px;
+    color: #C9A84C;
+    transition: transform 0.2s;
+}
+
+.saya-mobile-item__arrow.open { transform: rotate(180deg); }
+
+.saya-mobile-item__sub {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #faf8fd;
+}
+
+.saya-mobile-item__sub.open { max-height: 500px; }
+
+.saya-mobile-item__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    font-size: 13px;
+    color: #444;
+    text-decoration: none;
+    border-bottom: 1px solid #f0eaf8;
+}
+
+.saya-mobile-item__link:hover { color: #5B2D8E; }
+
+@media (max-width: 768px) {
+    .saya-nav__container { height: 62px; }
+    .saya-logo-slot { position: static; transform: none; }
+    .saya-nav__left, .saya-cta-btn { display: none; }
+    .saya-hamburger, .saya-cart-btn { display: flex; }
+}
+
+.saya-mobile-drawer__search-bar {
+    display: flex;
+    align-items: center;
+    padding: 14px 22px;
+    border-bottom: 1px solid #f0eaf8;
+    background: #fff;
+}
+
+.saya-mobile-drawer__search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #222;
+    padding: 4px 0;
+}
+
+.saya-mobile-drawer__search-input::placeholder {
+    color: #aaa;
+}
+
+.saya-mobile-drawer__search-clear {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+.saya-mobile-drawer__search-divider {
+    width: 1px;
+    height: 20px;
+    background: #e2daeb;
+    margin: 0 8px;
+}
+
+.saya-mobile-drawer__search-submit {
+    background: none;
+    border: none;
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.saya-mobile-drawer__search-submit:hover {
+    color: #5B2D8E;
+}
+.saya-fullscreen-search {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.88); /* Toza oq fondagi shaffoflik */
+    backdrop-filter: blur(15px); /* Orqa fonni chiroyli xira qilish (Glassmorphism) */
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 500; /* Hammadan ustida turishi uchun */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Pasdan tepaga chiqish animatsiyasi */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modal ochiq holati */
+.saya-fullscreen-search.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Modal yopish tugmasi (X) */
+.saya-fullscreen-search__close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: none;
+    border: none;
+    font-size: 38px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+    line-height: 1;
+}
+
+.saya-fullscreen-search__close:hover {
+    transform: scale(1.1);
+    color: #5B2D8E;
+}
+
+/* Ichki konteyner */
+.saya-fullscreen-search__inner {
+    width: min(720px, 85vw);
+    text-align: center;
+}
+
+/* Input va tugma qutisi */
+.saya-fullscreen-search__box {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #5B2D8E; /* Pastki chiziq brend rangida */
+    padding: 10px 0;
+}
+
+/* Asosiy katta Input */
+.saya-fullscreen-search__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    font-weight: 500;
+    color: #111;
+    padding: 5px 0;
+}
+
+.saya-fullscreen-search__input::placeholder {
+    color: #bbb;
+    font-weight: 400;
+}
+
+/* Input ichidagi qidiruv ikonkasi */
+.saya-fullscreen-search__submit {
+    background: none;
+    border: none;
+    color: #5B2D8E;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.saya-fullscreen-search__submit:hover {
+    transform: scale(1.1);
+}
+
+/* Input ostidagi eslatma matni */
+.saya-fullscreen-search__hint {
+    font-size: 13px;
+    color: #888;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES UPDATES
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 768px dan kichrayganda bu katta modal umuman kerak emas */
+    .saya-fullscreen-search {
+        display: none !important;
+    }
+
+    /* Navbar ichidagi qidiruv tugmasini yashirish (Chunki u mobil panelda bor) */
+    .saya-search-btn {
+        display: none !important;
+    }
+}

@@ -1,0 +1,140 @@
+.saya-catalog-section {
+    max-width: 1500px;
+    margin: 20px auto;
+    padding: 30px 24px;
+}
+.categories-slider-container {
+    background-color: #f7f7f7;
+}
+/* Sarlavha va Breadcrumbs */
+.saya-catalog-header h1 {
+    font-size: 36px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.saya-breadcrumbs {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 32px;
+}
+
+.saya-breadcrumbs .divider {
+    margin: 0 6px;
+    color: #ccc;
+}
+
+.saya-breadcrumbs .active {
+    color: #111;
+    font-weight: 500;
+}
+
+/* Kategoriya Grid - Desktop (1-rasmdagi holat) */
+.saya-catalog-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    overflow-x: visible;
+}
+
+/* Kategoriya kartochkasi */
+.saya-catalog-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s ease;
+}
+
+.saya-catalog-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Dumaloq rasm qutisi */
+.saya-catalog-card__img-wrapper {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.saya-catalog-card__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Matn stillari */
+.saya-catalog-card__title {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #222;
+    max-width: 120px;
+}
+
+/* Nuqtalarni desktoppda yashiramiz */
+.saya-catalog-dots {
+    display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE (768px dan kichik ekranlar - 2-rasmdagi holat)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .saya-catalog-grid {
+        overflow-x: auto; /* Gorizontal skrolni yoqish */
+        scroll-snap-type: x mandatory; /* Elementlar skrol bo'lganda silliq to'xtaydi */
+        scrollbar-width: none; /* Firefox uchun skrolbarni yashirish */
+        padding-bottom: 10px;
+        justify-content: flex-start;
+    }
+
+    /* Chrome, Safari va Opera uchun skrolbarni yashirish */
+    .saya-catalog-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .saya-catalog-card {
+        flex: 0 0 45%; /* Ekran kengligiga ko'ra birdaniga 2 tadan element sig'ishi uchun (2-rasmdagidek) */
+        scroll-snap-align: center; /* Element markazga snap bo'ladi */
+    }
+
+    .saya-catalog-card__img-wrapper {
+        width: 130px; /* Mobilda rasmlar ko'zga yaxshi tashlanishi uchun biroz kattartirildi */
+        height: 130px;
+    }
+
+    /* Nuqtalarni mobilda ko'rsatish */
+    .saya-catalog-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 24px;
+    }
+
+    /* Standart nuqta */
+    .saya-catalog-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        transition: all 0.2s ease;
+    }
+
+    /* Skrol bo'lganda faol holatga kelgan nuqta */
+    .saya-catalog-dot.active {
+        background: #5B2D8E; /* Sizning brendingiz rangida */
+        width: 14px; /* Chiroyli cho'zilish effekti */
+        border-radius: 4px;
+    }
+}
