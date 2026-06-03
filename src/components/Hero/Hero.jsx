@@ -6,39 +6,25 @@ const SCROLL_ITEMS = [
     {
         label: "Гарантия качества",
         icon: (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="m9 12 2 2 4-4" />
-            </svg>
+            <img src={assets.icon_7} className="hero-icon"/>
         )
     },
     {
         label: "Доставка",
         icon: (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="16" height="12" x="2" y="6" rx="2" />
-                <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                <path d="M12 12h.01" />
-            </svg>
+            <img src={assets.icon_6} className="hero-icon"/>
         )
     },
     {
         label: "Широкий ассортимент",
         icon: (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="7" height="7" x="3" y="3" rx="1" />
-                <rect width="7" height="7" x="14" y="3" rx="1" />
-                <rect width="7" height="7" x="14" y="14" rx="1" />
-                <rect width="7" height="7" x="3" y="14" rx="1" />
-            </svg>
+            <img src={assets.icon_4} className="hero-icon"/>
         )
     },
     {
         label: "Гарантия безопасности",
         icon: (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
+            <img src={assets.icon_5} className="hero-icon"/>
         )
     }
 ];

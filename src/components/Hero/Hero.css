@@ -90,10 +90,9 @@
     color: #5B2D8E;
 }
 
-.saya-hero__badge-icon svg {
+.hero-icon {
+    filter: invert(19%) sepia(82%) saturate(2250%) hue-rotate(253deg) brightness(84%) contrast(89%);
     width: 20px;
-    height: 20px;
-    stroke-width: 1.2px;
 }
 
 .saya-hero__badge-label {
@@ -126,6 +125,11 @@
     object-fit: cover;
     display: block;
     transition: 0.3s ease-in-out;
+}
+
+.her0-icon {
+    color: #3b0a5c;
+    fill: #3b0a5c;
 }
 
 .saya-hero__image-wrapper:hover .saya-hero__video {

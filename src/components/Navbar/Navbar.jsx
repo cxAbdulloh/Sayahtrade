@@ -196,12 +196,12 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        {/* ✅ YANGI: Где купить */}
+
                         <Link to="/wheretobuy" className="saya-nav__btn" style={{ textDecoration: 'none' }}>
                             Где купить
                         </Link>
 
-                        {/* ✅ YANGI: Скидки badge bilan */}
+
                         <Link to="/discounts" className="saya-nav__btn saya-nav__btn--deals" style={{ textDecoration: 'none' }}>
                             Скидки
                             <span className="saya-nav__badge">Акция</span>
@@ -222,7 +222,7 @@ export default function Navbar() {
                     <Link to="/contactwithus" className="saya-cta-btn">Связаться С Нами</Link>
 
                     <button className="saya-cart-btn">
-                        <img src={assets.icon_2} alt="Cart"/>
+                        <img src={assets.icon_2}/>
                     </button>
 
                 </div>
