@@ -1,4 +1,4 @@
-import "./WhereToBuy.css";
+import "./WheretoBuy.css";
 
 const marketplaces = [
     {
@@ -64,7 +64,7 @@ const pharmacies = [
 
 
 
-export default function WhereToBuy() {
+export default function WheretoBuy() {
     return (
         <section className="wtb-section">
             <div className="wtb-container">
