@@ -21,7 +21,6 @@ export default function Contact() {
             </div>
             <div className="contact-wrapper">
                 <div className="contact-grid">
-                    {/* LEFT */}
                     <div className="contact-left">
                         <h1>Наш адрес</h1>
                         <a className="contact-address-link">г.Ташкент, ул. Навнихол, 3</a>
@@ -104,7 +103,7 @@ export default function Contact() {
                     <div className="contact-map-container">
                         <div className="map-placeholder">
                             <iframe
-                                src="https://yandex.com/map-widget/v1/?um=constructor%3A7ec07f0fa6ed69bcc8abbfaf15792b442ec47dd373cd7f2302a3f274db88b5b1&amp;source=constructor"
+                                src="https://yandex.com/map-widget/v1/?um=constructor%3A769dc12d101e43638b7156e2e373739f93ec633dfe9cc29f42c05a23d12d0535&amp;source=constructor"
                                 width="600" height="600" frameBorder="0"></iframe>
                         </div>
                     </div>

@@ -1,58 +1,57 @@
 import React, { useRef } from "react";
 import "./Categories.css";
+import {assets} from "../../assets/assets.js";
 
 const CATEGORIES_DATA = [
     {
         id: 1,
         title: "ANTI-AGE",
-        image: "https://sayatrade.uz/wp-content/uploads/2025/07/antiage-1.jpg"
+        image: assets.photo_1,
     },
     {
         id: 2,
         title: "ВИТАМИНЫ И МИНЕРАЛЫ",
-        image: "https://sayatrade.uz/wp-content/uploads/2024/12/js_bi1l4.jpg"
+        image: assets.photo_2,
     },
     {
         id: 3,
         title: "ВНИМАНИЯ И РАБОТЫ МОЗГА",
-        image: "https://sayatrade.uz/wp-content/uploads/2025/07/brain-150x147.jpg"
+        image: assets.photo_3,
     },
     {
         id: 4,
         title: "ЖЕНСКОЕ ЗДОРОВЬЕ",
-        image: "https://sayatrade.uz/wp-content/uploads/2024/12/priority-product-x-large-150x150.png"
+        image: assets.photo_4,
     },
     {
         id: 5,
         title: "ЗДОРОВЬЕ СЕРДЦА, СОСУДОВ, ВЕН",
-        image: "https://sayatrade.uz/wp-content/uploads/2024/12/heart-health.jpg"
+        image: assets.photo_5,
     },
     {
         id: 6,
         title: "ЗДОРОВЬЕ СУСТАВОВ И КОСТЕЙ",
-        image: "https://sayatrade.uz/wp-content/uploads/2024/12/joints-health.jpg"
+        image: assets.photo_6,
     },
     {
         id: 7,
         title: "ЗДОРОВЬЕ ЩИТОВИДНОЙ ЖЕЛЕЗЫ",
-        image: "https://sayatrade.uz/wp-content/uploads/2024/12/thyroid-health.jpg"
+        image: assets.photo_8,
     },
     {
         id: 8,
         title: "ЛЕЧЕБНЫЕ ЧАИ",
-        image: "https://sayatrade.uz/wp-content/uploads/2024/12/herbal-tea.jpg"
+        image: assets.photo_7,
     }
 ];
 
 export default function Categories() {
     const scrollRef = useRef(null);
 
-    // To'liq 4 ta kartani birdaniga o'tkazish mantiqi
     const handleScroll = (direction) => {
         if (scrollRef.current) {
             const { scrollLeft, clientWidth } = scrollRef.current;
 
-            // clientWidth - ko'rinib turgan 4 ta kartaning umumiy kengligi
             const scrollAmount = clientWidth;
 
             scrollRef.current.scrollTo({
@@ -68,7 +67,6 @@ export default function Categories() {
                 <h2 className="saya-categories__title">Популярные категории</h2>
 
                 <div className="saya-categories__slider-wrapper">
-                    {/* Chapga burish tugmasi */}
                     <button
                         className="saya-categories__arrow saya-categories__arrow--left"
                         onClick={() => handleScroll("left")}
@@ -77,7 +75,6 @@ export default function Categories() {
                         ‹
                     </button>
 
-                    {/* Scroll bo'luvchi asosiy konteyner */}
                     <div className="saya-categories__grid" ref={scrollRef}>
                         {CATEGORIES_DATA.map((category) => (
                             <div key={category.id} className="saya-categories__card">
@@ -93,7 +90,6 @@ export default function Categories() {
                         ))}
                     </div>
 
-                    {/* O'ngga burish tugmasi */}
                     <button
                         className="saya-categories__arrow saya-categories__arrow--right"
                         onClick={() => handleScroll("right")}

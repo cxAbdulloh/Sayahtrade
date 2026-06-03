@@ -119,20 +119,20 @@
 
 @media (max-width: 900px) {
     .consult-wrapper {
-        padding: 40px 20px; /* Ekran kichrayganda chekkadagi padding qisqardi */
+        padding: 40px 20px;
     }
 
     .consult-grid {
-        grid-template-columns: 1fr; /* Elementlar ustma-ust tushadi */
+        grid-template-columns: 1fr;
         gap: 40px;
     }
 
     .consult-left {
-        position: static; /* Mobil qurilmada sticky o'chadi */
+        position: static;
     }
 
     .consult-title {
-        font-size: 32px; /* Sarlavha mobilga moslab kichraytirildi */
+        font-size: 32px;
         margin-bottom: 16px;
     }
 
@@ -142,12 +142,11 @@
     }
 
     .consult-icons {
-        margin-bottom: 10px; /* Forma bilan oraliq masofa */
+        margin-bottom: 10px;
     }
 }
 
 .consult-form-box {
-    /*background: #f5f5f5;*/
     border-radius: 30px;
     padding: 28px 24px;
 }

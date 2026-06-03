@@ -98,19 +98,14 @@
     width: max-content;
 }
 
-/* --- ANIMATSIYALAR (CHAPGA VA ONGGA) --- */
-
-/* 1-Qavat: Chapga yurish */
 .saya-care__marquee--left .saya-care__marquee-track {
     animation: sayaCareScrollLeft 50s linear infinite;
 }
 
-/* 2-Qavat: O'ngga yurish */
 .saya-care__marquee--right .saya-care__marquee-track {
     animation: sayaCareScrollRight 50s linear infinite;
 }
 
-/* Kapsula kartasi */
 .saya-care__image-card {
     width: 600px;
     height: 200px;
@@ -131,7 +126,6 @@
     transform: scale(1.05);
 }
 
-/* Chapga harakat keyframe */
 @keyframes sayaCareScrollLeft {
     0% {
         transform: translateX(0);
@@ -141,7 +135,6 @@
     }
 }
 
-/* O'ngga harakat keyframe */
 @keyframes sayaCareScrollRight {
     0% {
         transform: translateX(-33.333%);
@@ -151,7 +144,6 @@
     }
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .saya-care__title {
         font-size: 36px;

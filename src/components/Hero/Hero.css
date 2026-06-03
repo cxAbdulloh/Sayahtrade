@@ -1,11 +1,10 @@
-/* Asosiy sekshn va shrift sozlamalari */
+
 .saya-hero {
     overflow: hidden;
     width: 100%;
     background-color: #f7f7f7;
 }
 
-/* Max-width 1500px qilinib, o'rtaga tekislandi */
 .saya-hero__container {
     max-width: 1500px;
     margin: 0 auto;
@@ -15,7 +14,6 @@
     width: 100%;
 }
 
-/* Chap tomon (eski holatiga qaytarildi) */
 .saya-hero__left {
     flex: 0 0 50%;
     width: 50%;
@@ -168,7 +166,6 @@
     margin-left: 4px;
 }
 
-/* MEDIA QUERIES */
 @media (max-width: 1200px) {
     .saya-hero__left {
         padding: 40px 30px 60px 40px;

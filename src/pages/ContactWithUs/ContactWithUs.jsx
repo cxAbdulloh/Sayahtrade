@@ -8,7 +8,7 @@ export default function ContactWithUs() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    // Bergan rasm linklaringiz massivi
+
     const iconUrls = [
         "https://sayatrade.uz/wp-content/uploads/2024/03/w-pas-experts-ico-1.svg",
         "https://sayatrade.uz/wp-content/uploads/2024/03/w-pas-experts-ico-2.svg",
@@ -20,7 +20,6 @@ export default function ContactWithUs() {
     return (
         <section className="consult-wrapper">
             <div className="consult-grid">
-                {/* LEFT */}
                 <div className="consult-left">
                     <h1 className="consult-title">
                         ПОЛУЧИТЕ <br />
@@ -41,7 +40,6 @@ export default function ContactWithUs() {
                     </div>
                 </div>
 
-                {/* RIGHT — FORM */}
                 <div className="consult-form-box">
                     <h3>Написать нам</h3>
 

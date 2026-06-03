@@ -12,23 +12,21 @@
     justify-content: center;text-align: center;
 }
 
-/* Parol inputi uchun o'rab turuvchi konteyner */
 .password-wrapper {
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* Eski input margin-bottom qiymati bilan bir xil bo'lsin */
+    margin-bottom: 20px;
 }
 
-/* Wrapper ichidagi haqiqiy input */
 .password-input {
     width: 100%;
-    padding-right: 45px !important; /* O'ng tomondan ko'zcha uchun joy tashlaymiz */
-    margin-bottom: 0 !important; /* Wrapper o'zi joy tashlagani uchun buni nolga keltiramiz */
+    padding-right: 45px !important;
+    margin-bottom: 0 !important;
 }
 
-/* Ko'zcha tugmasining stillari */
+
 .password-toggle-btn {
     position: absolute;
     right: 14px;
@@ -40,13 +38,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #888888; /* Yumshoq kulrang ikona */
+    color: #888888;
     transition: color 0.2s ease;
     z-index: 2;
     height: 100%;
 }
 
-/* Tugma bosilganda ko'k ramka (outline) chiqib qolmasligi uchun */
 .password-toggle-btn:focus {
     outline: none;
 }
@@ -77,9 +74,6 @@
     font-weight: bold;
 }
 
-/* ==========================================================================
-   Forma qismining stillari
-   ========================================================================== */
 .login-section {
     background: #fbfbfb;
     padding: 50px 16px;
@@ -146,7 +140,7 @@
     height: 55px;
     border: none;
     border-radius: 50px;
-    background: #8cad97; /* Yashilroq tugma rangi */
+    background: #8cad97;
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -175,7 +169,7 @@
 
 .login-bottom a {
     text-decoration: none;
-    color: #5b2d8e; /* Binafsha rangli havola */
+    color: #5b2d8e;
     font-size: 14px;
 }
 
@@ -213,7 +207,6 @@
     font-size: 14px;
 }
 
-/* Mobil qurilmalar uchun moslashuvchanlik (Responsive) */
 @media (max-width: 768px) {
     .login-container {
         grid-template-columns: 1fr;

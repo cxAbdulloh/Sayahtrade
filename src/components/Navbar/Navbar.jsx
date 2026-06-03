@@ -11,6 +11,7 @@ export default function Navbar() {
     const [searchVal, setSearchVal] = useState("");
     const [mobileCatalogOpen, setMobileCatalogOpen] = useState(false);
     const [searchModalOpen, setSearchModalOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
@@ -33,10 +34,7 @@ export default function Navbar() {
 
     return (
         <>
-            {/* MOBILE BACKDROP */}
             {mobileOpen && <div className="saya-mobile-backdrop" onClick={() => setMobileOpen(false)} />}
-
-            {/* MOBILE DRAWER */}
             <div className={`saya-mobile-drawer${mobileOpen ? " open" : ""}`}>
                 <div className="saya-mobile-drawer__search-bar">
                     <input
@@ -58,7 +56,6 @@ export default function Navbar() {
                 </div>
 
                 <nav className="saya-mobile-drawer__nav">
-                    {/* Каталог */}
                     <div>
                         <button className="saya-mobile-item__btn" onClick={() => setMobileCatalogOpen(!mobileCatalogOpen)}>
                             Каталог <span className={`saya-mobile-item__arrow${mobileCatalogOpen ? " open" : ""}`}><img src={assets.arrow} alt="" style={{ width: "10px", height: "auto", filter: "opacity(0.4)" }}/></span>
@@ -85,7 +82,7 @@ export default function Navbar() {
                     </div>
 
                     <Link to="/about" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>О Компании</Link>
-                    <Link to="/" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>Блог</Link>
+                    <Link to="/blog" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>Блог</Link>
                     <Link to="/contact" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>Контакты</Link>
                     <Link to="/wheretobuy" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>Где купить</Link>
                     <Link to="/discounts" className="saya-mobile-item__btn" style={{display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>
@@ -104,7 +101,6 @@ export default function Navbar() {
                 </nav>
             </div>
 
-            {/* FULLSCREEN SEARCH MODAL */}
             <div className={`saya-fullscreen-search${searchModalOpen ? " open" : ""}`}>
                 <button className="saya-fullscreen-search__close" onClick={() => setSearchModalOpen(false)}>×</button>
                 <div className="saya-fullscreen-search__inner">
@@ -127,7 +123,6 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* DESKTOP NAVBAR */}
             <nav className={`saya-nav${scrolled ? " scrolled" : ""}`}>
                 <div className="saya-nav__container">
 
@@ -136,7 +131,6 @@ export default function Navbar() {
                     </button>
 
                     <div className="saya-nav__left">
-                        {/* Каталог Dropdown */}
                         <div
                             className="saya-dropdown-wrap"
                             onMouseEnter={() => setCatalogOpen(true)}
@@ -170,7 +164,6 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        {/* О нас Dropdown */}
                         <div
                             className="saya-dropdown-wrap"
                             onMouseEnter={() => setAboutOpen(true)}
@@ -207,7 +200,6 @@ export default function Navbar() {
                             <span className="saya-nav__badge">Акция</span>
                         </Link>
 
-                        {/* Search */}
                         <button className="saya-search-btn" onClick={() => setSearchModalOpen(true)}>
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -221,11 +213,49 @@ export default function Navbar() {
 
                     <Link to="/contactwithus" className="saya-cta-btn">Связаться С Нами</Link>
 
-                    <button className="saya-cart-btn">
+                    <button className="saya-cart-btn" onClick={() => setCartOpen(true)}>
                         <img src={assets.icon_2}/>
                     </button>
 
+
                 </div>
+                {cartOpen && (
+                    <>
+                        <div
+                            className="cart-overlay"
+                            onClick={() => setCartOpen(false)}
+                        />
+
+                        <div className="cart-drawer">
+                            <div className="cart-drawer__header">
+                                <h3>Корзина</h3>
+
+                                <button
+                                    className="cart-close"
+                                    onClick={() => setCartOpen(false)}
+                                >
+                                    ✕
+                                </button>
+                            </div>
+
+                            <div className="cart-empty">
+                                <div className="cart-empty__icon">
+                                    <img src="https://static.vecteezy.com/system/resources/previews/052/944/503/non_2x/shopping-backet-icon-buy-sign-for-sale-web-site-shop-retail-market-and-commerce-store-symbol-vector.jpg" alt="" />
+
+                                </div>
+
+                                <p>Корзина пуста</p>
+
+                                <Link to="/shop"
+                                    className="cart-return-btn"
+                                    onClick={() => setCartOpen(false)}
+                                >
+                                    Вернуться в Магазин
+                                </Link>
+                            </div>
+                        </div>
+                    </>
+                )}
             </nav>
         </>
     );

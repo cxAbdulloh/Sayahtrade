@@ -76,7 +76,7 @@ export default function Footer() {
 
             <div className="saya-footer__bottom">
                 <div className="saya-footer__bottom-container">
-                    <span>SayaTrade © 2026</span>
+                    <span>SayaTrade © 2025</span>
                 </div>
             </div>
         </footer>

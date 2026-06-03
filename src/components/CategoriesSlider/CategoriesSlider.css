@@ -6,7 +6,6 @@
 .categories-slider-container {
     background-color: #f7f7f7;
 }
-/* Sarlavha va Breadcrumbs */
 .saya-catalog-header h1 {
     font-size: 36px;
     font-weight: 500;
@@ -30,7 +29,6 @@
     font-weight: 500;
 }
 
-/* Kategoriya Grid - Desktop (1-rasmdagi holat) */
 .saya-catalog-grid {
     display: flex;
     justify-content: space-between;
@@ -39,7 +37,7 @@
     overflow-x: visible;
 }
 
-/* Kategoriya kartochkasi */
+
 .saya-catalog-card {
     flex: 1;
     display: flex;
@@ -55,7 +53,7 @@
     transform: translateY(-4px);
 }
 
-/* Dumaloq rasm qutisi */
+
 .saya-catalog-card__img-wrapper {
     width: 110px;
     height: 110px;
@@ -73,7 +71,6 @@
     object-fit: cover;
 }
 
-/* Matn stillari */
 .saya-catalog-card__title {
     font-size: 13px;
     font-weight: 500;
@@ -82,39 +79,33 @@
     max-width: 120px;
 }
 
-/* Nuqtalarni desktoppda yashiramiz */
 .saya-catalog-dots {
     display: none;
 }
 
-/* ==========================================================================
-   RESPONSIVE (768px dan kichik ekranlar - 2-rasmdagi holat)
-   ========================================================================== */
 @media (max-width: 768px) {
     .saya-catalog-grid {
-        overflow-x: auto; /* Gorizontal skrolni yoqish */
-        scroll-snap-type: x mandatory; /* Elementlar skrol bo'lganda silliq to'xtaydi */
-        scrollbar-width: none; /* Firefox uchun skrolbarni yashirish */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
         padding-bottom: 10px;
         justify-content: flex-start;
     }
 
-    /* Chrome, Safari va Opera uchun skrolbarni yashirish */
     .saya-catalog-grid::-webkit-scrollbar {
         display: none;
     }
 
     .saya-catalog-card {
-        flex: 0 0 45%; /* Ekran kengligiga ko'ra birdaniga 2 tadan element sig'ishi uchun (2-rasmdagidek) */
-        scroll-snap-align: center; /* Element markazga snap bo'ladi */
+        flex: 0 0 45%;
+        scroll-snap-align: center;
     }
 
     .saya-catalog-card__img-wrapper {
-        width: 130px; /* Mobilda rasmlar ko'zga yaxshi tashlanishi uchun biroz kattartirildi */
+        width: 130px;
         height: 130px;
     }
 
-    /* Nuqtalarni mobilda ko'rsatish */
     .saya-catalog-dots {
         display: flex;
         justify-content: center;
@@ -122,7 +113,7 @@
         margin-top: 24px;
     }
 
-    /* Standart nuqta */
+
     .saya-catalog-dot {
         width: 6px;
         height: 6px;
@@ -131,10 +122,9 @@
         transition: all 0.2s ease;
     }
 
-    /* Skrol bo'lganda faol holatga kelgan nuqta */
     .saya-catalog-dot.active {
-        background: #5B2D8E; /* Sizning brendingiz rangida */
-        width: 14px; /* Chiroyli cho'zilish effekti */
+        background: #5B2D8E;
+        width: 14px;
         border-radius: 4px;
     }
 }

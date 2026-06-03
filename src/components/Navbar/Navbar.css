@@ -178,12 +178,12 @@
 .saya-dropdown-overlay::before {
     content: "";
     position: absolute;
-    top: -20px; /* Tugma va dropdown orasidagi bo'shliq o'lchamiga qarab (masalan -15px yoki -20px) */
+    top: -20px;
     left: 0;
     width: 100%;
     height: 20px;
     display: block;
-    background: transparent; /* Ko'rinmas ko'prik */
+    background: transparent;
 }
 .saya-simple-dropdown {
     position: absolute;
@@ -479,29 +479,25 @@
 .saya-fullscreen-search {
     position: fixed;
     inset: 0;
-    background: rgba(255, 255, 255, 0.88); /* Toza oq fondagi shaffoflik */
-    backdrop-filter: blur(15px); /* Orqa fonni chiroyli xira qilish (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    z-index: 500; /* Hammadan ustida turishi uchun */
+    z-index: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* Pasdan tepaga chiqish animatsiyasi */
     opacity: 0;
     pointer-events: none;
     transform: translateY(30px);
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Modal ochiq holati */
 .saya-fullscreen-search.open {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
 }
 
-/* Modal yopish tugmasi (X) */
 .saya-fullscreen-search__close {
     position: absolute;
     top: 30px;
@@ -532,7 +528,6 @@
     padding: 10px 0;
 }
 
-/* Asosiy katta Input */
 .saya-fullscreen-search__input {
     flex: 1;
     background: transparent;

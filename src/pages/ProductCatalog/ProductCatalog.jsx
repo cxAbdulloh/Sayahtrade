@@ -47,7 +47,7 @@ const MOCK_PRODUCTS = [
 export default function ProductCatalog() {
     const [perPage, setPerPage] = useState(24);
     const [sortBy, setSortBy] = useState("popularity");
-    const [viewType, setViewType] = useState("grid-4");
+    const [viewType, setViewType] = useState("grid-4"); // 'grid-4' (to'rttalik) yoki 'grid-3' (uchtalik)
     const [isSortOpen, setIsSortOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
@@ -74,7 +74,8 @@ export default function ProductCatalog() {
 
     return (
         <div className="saya-catalog-container">
-            <div className="saya-toolbar">
+            {/* --- DESKTOP TOOLBAR --- */}
+            <div className="saya-toolbar saya-desktop-only">
                 <div className="saya-toolbar__left">Отображение 1–24 из 63</div>
                 <div className="saya-toolbar__right">
                     <div className="saya-per-page">
@@ -91,9 +92,11 @@ export default function ProductCatalog() {
                     </div>
 
                     <div className="saya-view-switcher">
+                        {/* To'rttalik Grid Tugmasi */}
                         <button className={`saya-view-btn ${viewType === "grid-4" ? "active" : ""}`} onClick={() => setViewType("grid-4")}>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect width="10" height="10"/><rect x="14" width="10" height="10"/><rect y="14" width="10" height="10"/><rect x="14" y="14" width="10" height="10"/></svg>
                         </button>
+                        {/* Uchtalik Grid Tugmasi */}
                         <button className={`saya-view-btn ${viewType === "grid-3" ? "active" : ""}`} onClick={() => setViewType("grid-3")}>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="4" cy="4" r="2"/><circle cx="12" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="20" cy="12" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="12" cy="20" r="2"/><circle cx="20" cy="20" r="2"/></svg>
                         </button>
@@ -120,7 +123,45 @@ export default function ProductCatalog() {
                 </div>
             </div>
 
-            {/* MAHSULOTLAR GRIDI (Bestsellers Karta dizayni bilan) */}
+            {/* --- MOBIL TOOLBAR --- */}
+            <div className="saya-mobile-toolbar">
+                <button className="saya-mobile-sidebar-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span>Show sidebar</span>
+                </button>
+
+                <button className="saya-mobile-sort-btn" onClick={() => setIsSortOpen(!isSortOpen)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                         stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         className="lucide lucide-arrow-down-wide-narrow-icon lucide-arrow-down-wide-narrow">
+                        <path d="m3 16 4 4 4-4"/>
+                        <path d="M7 20V4"/>
+                        <path d="M11 4h10"/>
+                        <path d="M11 8h7"/>
+                        <path d="M11 12h4"/>
+                    </svg>
+                </button>
+
+                {isSortOpen && (
+                    <ul className="saya-sort-dropdown__menu mobile-sort-menu">
+                        {sortOptions.map((option) => (
+                            <li
+                                key={option.value}
+                                className={sortBy === option.value ? "selected" : ""}
+                                onClick={() => { setSortBy(option.value); setIsSortOpen(false); }}
+                            >
+                                {option.label}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+
+            {/* --- MAHSULOTLAR RO'YXATI (Dinamik grid klassi bilan) --- */}
             <div className={`saya-products-grid ${viewType}`}>
                 {MOCK_PRODUCTS.map((product) => (
                     <div key={product.id} className="saya-bestsellers__card">
@@ -134,10 +175,9 @@ export default function ProductCatalog() {
                             <div className="saya-bestsellers__price">{product.price}</div>
                         </div>
 
-                        {/* Hover harakatlari paneli */}
                         <div className="saya-bestsellers__hover-actions">
                             <button className="saya-bestsellers__btn-cart">В Корзину</button>
-                            <button className="saya-bestsellers__btn-view" aria-label="Quick view" onClick={() => { setSelectedProduct(product); setQuantity(1); }}>
+                            <button className="saya-bestsellers__btn-view_view" aria-label="Quick view" onClick={() => { setSelectedProduct(product); setQuantity(1); }}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <circle cx="11" cy="11" r="8"></circle>
                                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -148,7 +188,7 @@ export default function ProductCatalog() {
                 ))}
             </div>
 
-            {/* TEZKOR KO'RISH (QUICK VIEW) MODAL OYNASI */}
+            {/* --- QUICK VIEW MODAL --- */}
             {selectedProduct && (
                 <div className="saya-modal-overlay" onClick={() => setSelectedProduct(null)}>
                     <div className="saya-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -158,7 +198,7 @@ export default function ProductCatalog() {
                             <div className="saya-modal-img-container">
                                 <img src={selectedProduct.image} alt={selectedProduct.title} className="saya-modal-img" />
                             </div>
-                            <button className="saya-modal-btn-more">Подробнее О Товаре</button>
+                            <button className="saya-modal-btn-more">Подробнее о товаре</button>
                         </div>
 
                         <div className="saya-modal-right">
@@ -182,14 +222,14 @@ export default function ProductCatalog() {
                                     <button onClick={() => setQuantity(q => q + 1)}>+</button>
                                 </div>
                                 <button className="saya-modal-btn-cart">В Корзину</button>
-                                <button className="saya-modal-btn-buy">Купить Сейчас</button>
+                                <button className="saya-modal-btn-buy">Купить сейчас</button>
                             </div>
 
                             <hr className="saya-modal-divider" />
 
-                            <div className="saya-modal-meta">
-                                <div><span className="saya-modal-meta-label">Артикул:</span> {selectedProduct.sku}</div>
-                                <div><span className="saya-modal-meta-label">Категория:</span> {selectedProduct.category}</div>
+                            <div className="saya-meta">
+                                <div><span className="saya-meta-label">Артикул:</span> {selectedProduct.sku}</div>
+                                <div><span className="saya-meta-label">Категория:</span> {selectedProduct.category}</div>
                             </div>
                         </div>
                     </div>

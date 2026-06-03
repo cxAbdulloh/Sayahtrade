@@ -1,14 +1,12 @@
-/* Asosiy konteyner */
+/* --- Asosiy Konteyner --- */
 .saya-catalog-container {
     max-width: 1500px;
     margin: 30px auto;
-    padding: 0 24px;
+    padding: 0 16px;
     background-color: #fff;
 }
 
-/* ==========================================================================
-   TOOLBAR PANELI STILLARI
-   ========================================================================== */
+/* --- DESKTOP TOOLBAR (image_e4ca28.png uslubida) --- */
 .saya-toolbar {
     display: flex;
     justify-content: space-between;
@@ -63,60 +61,78 @@
     transition: color 0.2s;
 }
 
+/* Faol grid almashtirgich ikonkasi qorayadi */
 .saya-view-btn.active, .saya-view-btn:hover {
-    color: #888;
+    color: #111 !important;
 }
 
-/* Custom Dropdown Sorting */
+/* Dropdown */
 .saya-sort-dropdown {
     position: relative;
-    z-index: 20;
+    z-index: 100;
 }
 
 .saya-sort-dropdown__trigger {
+    height: 48px;
+    min-width: 240px;
+    padding: 0 18px;
     background: #fff;
-    border: 1px solid #e2e2e2;
-    border-radius: 4px;
-    padding: 8px 16px;
-    font-size: 13.5px;
-    color: #444;
-    cursor: pointer;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    min-width: 180px;
     justify-content: space-between;
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+
+    transition: all .2s ease;
+}
+
+.saya-sort-dropdown__trigger:hover {
+    border-color: #bdbdbd;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
 }
 
 .saya-sort-dropdown__trigger .arrow {
-    font-size: 9px;
-    color: #aaa;
+    font-size: 11px;
+    color: #999;
+    transition: transform .2s ease;
 }
 
+.saya-sort-dropdown.open .arrow {
+    transform: rotate(180deg);
+}
 .saya-sort-dropdown__menu {
     position: absolute;
-    top: 105%;
+    top: calc(100% + 8px);
     right: 0;
+
+    min-width: 240px;
+    padding: 8px;
+
     background: #fff;
-    border: 1px solid #e2e2e2;
-    border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    list-style: none;
-    padding: 6px 0;
-    margin: 0;
-    min-width: 200px;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+
+    box-shadow:
+            0 12px 30px rgba(0,0,0,.08),
+            0 2px 8px rgba(0,0,0,.04);
+
+    overflow: hidden;
 }
 
 .saya-sort-dropdown__menu li {
-    padding: 9px 16px;
-    cursor: pointer;
-    font-size: 13px;
-    color: #555;
-    transition: background 0.15s;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: .2s;
 }
 
 .saya-sort-dropdown__menu li:hover {
-    background: #f5f5f5;
+    background: #f7f7f7;
 }
 
 .saya-sort-dropdown__menu li.selected {
@@ -124,29 +140,33 @@
     color: #fff;
 }
 
-/* ==========================================================================
-   PRODUCTS GRID MESH
-   ========================================================================== */
+/* --- MOBIL TOOLBAR (Katta ekranda yashirin) --- */
+.saya-mobile-toolbar {
+    display: none;
+}
+
+/* --- ANIQ ISHLOVCHI MULTI-GRID LOGIKASI --- */
 .saya-products-grid {
     display: grid;
     gap: 24px;
     padding-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
 }
 
+/* Tugmalar bosilganda ustunlar soni aniq o'zgaradi */
 .saya-products-grid.grid-4 {
     grid-template-columns: repeat(4, 1fr);
 }
-
 .saya-products-grid.grid-3 {
     grid-template-columns: repeat(3, 1fr);
 }
 
-/* ==========================================================================
-   BESTSELLERS MAHSULOT KARTASI (KO'CHIRILGAN VA BIRLASHTIRILGAN)
-   ========================================================================== */
+/* --- IPHONE STYLE CARD (Chegarasiz original ko'rinish) --- */
 .saya-bestsellers__card {
     background-color: #f7f7f7;
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -154,7 +174,7 @@
     box-sizing: border-box;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    border: 1px solid transparent;
+    border: none;
 }
 
 .saya-bestsellers__card:hover {
@@ -206,11 +226,11 @@
 .saya-bestsellers__price {
     font-size: 18px;
     font-weight: 700;
-    color: #4a148c;
+    color: #4a148c; /* Asl to'q binafsha */
     margin-top: auto;
 }
 
-/* HOVER PANEL EFFEKTLARI */
+/* Hover actions */
 .saya-bestsellers__hover-actions {
     position: absolute;
     bottom: -60px;
@@ -235,7 +255,7 @@
 
 .saya-bestsellers__btn-cart {
     flex-grow: 1;
-    background-color: #85a996;
+    background-color: #85a996; /* Asl yashil */
     color: #ffffff;
     border: none;
     padding: 12px 0;
@@ -274,9 +294,7 @@
     color: #4a148c;
 }
 
-/* ==========================================================================
-   MODAL OYNASI STILLARI (O'ZGARISHSIZ QOLADI)
-   ========================================================================== */
+/* --- QUICK VIEW MODAL (Asl ranglar) --- */
 .saya-modal-overlay {
     position: fixed;
     inset: 0;
@@ -336,43 +354,146 @@
 .saya-modal-btn-cart { background-color: #85a996; color: white; border: none; height: 46px; padding: 0 24px; font-size: 15px; font-weight: 600; border-radius: 25px; cursor: pointer; }
 .saya-modal-btn-buy { background-color: #2e2e2e; color: white; border: none; height: 46px; padding: 0 24px; font-size: 15px; font-weight: 600; border-radius: 25px; cursor: pointer; }
 .saya-modal-divider { border: 0; border-top: 1px solid #eee; margin-bottom: 20px; }
-.saya-modal-meta { font-size: 14px; color: #666; display: flex; flex-direction: column; gap: 6px; }
-.saya-modal-meta-label { font-weight: 600; color: #1a1a1a; }
+.saya-meta { font-size: 14px; color: #666; display: flex; flex-direction: column; gap: 6px; }
+.saya-meta-label { font-weight: 600; color: #1a1a1a; }
 
-/* ==========================================================================
-   RESPONSIVE MOSLASHUVCHANLIK
-   ========================================================================== */
+/* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1200px) {
-    .saya-products-grid.grid-4 {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    .saya-products-grid.grid-4 { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 900px) {
-    .saya-products-grid.grid-4, .saya-products-grid.grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .saya-modal-content {
-        grid-template-columns: 1fr;
-        padding: 24px;
-        gap: 20px;
-    }
+    .saya-products-grid.grid-4, .saya-products-grid.grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .saya-modal-content { grid-template-columns: 1fr; padding: 24px; gap: 20px; }
 }
+/* --- 568px va undan kichik ekranlar uchun --- */
+@media (max-width: 568px) {
 
-@media (max-width: 600px) {
-    .saya-toolbar {
+    .saya-desktop-only {
+        display: none !important;
+    }
+
+    /* Mobil toolbar */
+    .saya-mobile-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 4px;
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 999;
+    }
+
+    .saya-mobile-sidebar-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000;
+        padding: 6px 0;
+    }
+
+    .saya-mobile-sort-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #000;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .saya-mobile-toolbar .mobile-sort-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 220px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        padding: 6px;
+        margin-top: 6px;
+        border: 1px solid #e2e2e2;
+        z-index: 9999;
+    }
+
+    /* ===== MUHIM QISM ===== */
+    .saya-products-grid,
+    .saya-products-grid.grid-4,
+    .saya-products-grid.grid-3 {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .saya-bestsellers__card {
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+        border-radius: 16px;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+        height: 100%;
     }
-    .saya-products-grid.grid-4, .saya-products-grid.grid-3 {
-        grid-template-columns: 1fr;
+
+    .saya-bestsellers__image-wrapper {
+        height: 140px;
+        margin-bottom: 10px;
     }
+
+    .saya-bestsellers__img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    .saya-bestsellers__name {
+        font-size: 13px;
+        line-height: 1.35;
+        min-height: 36px;
+        margin-bottom: 4px;
+    }
+
+    .saya-bestsellers__category {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+
+    .saya-bestsellers__price {
+        font-size: 15px;
+        margin-top: auto;
+    }
+
+    /* Mobil uchun hover tugmalar doim ko'rinadi */
     .saya-bestsellers__hover-actions {
         position: static;
         opacity: 1;
         visibility: visible;
-        padding: 12px 0 0 0;
+        padding: 10px 0 0;
         background: transparent;
+        gap: 8px;
+    }
+
+    .saya-bestsellers__btn-cart {
+        flex: 1;
+        padding: 9px 0;
+        font-size: 12px;
+        border-radius: 18px;
+    }
+
+    .saya-bestsellers__btn-view {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+    .saya-bestsellers__btn-view_view {
+        display: none;
     }
 }

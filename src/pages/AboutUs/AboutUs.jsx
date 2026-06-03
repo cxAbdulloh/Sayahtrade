@@ -18,7 +18,6 @@ export default function AboutUs() {
 
             <div className="saya-about__container">
 
-                {/* Chap taraf: Sarlavha va matnlar */}
                 <div className="saya-about__left">
                     <span className="saya-about__subtitle">O Нас</span>
                     <h2 className="saya-about__title">
@@ -39,10 +38,8 @@ export default function AboutUs() {
                     </div>
                 </div>
 
-                {/* O'ng taraf: Afzalliklar ro'yxati (Yulduzchalar bilan) */}
                 <div className="saya-about__right">
 
-                    {/* Element 1 */}
                     <div className="saya-about__feature">
                         <div className="saya-about__icon-wrap">
                             <svg className="saya-about__star" viewBox="0 0 24 24" fill="currentColor">
@@ -58,7 +55,6 @@ export default function AboutUs() {
                         </div>
                     </div>
 
-                    {/* Element 2 */}
                     <div className="saya-about__feature">
                         <div className="saya-about__icon-wrap">
                             <svg className="saya-about__star" viewBox="0 0 24 24" fill="currentColor">
@@ -74,7 +70,6 @@ export default function AboutUs() {
                         </div>
                     </div>
 
-                    {/* Element 3 */}
                     <div className="saya-about__feature">
                         <div className="saya-about__icon-wrap">
                             <svg className="saya-about__star" viewBox="0 0 24 24" fill="currentColor">

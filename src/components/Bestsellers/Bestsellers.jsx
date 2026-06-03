@@ -59,7 +59,6 @@ export default function Bestsellers() {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
 
-    // Modal ochilganda orqa fon skroll bo'lib ketmasligi uchun
     useEffect(() => {
         if (selectedProduct) {
             document.body.style.overflow = "hidden";
@@ -82,7 +81,7 @@ export default function Bestsellers() {
 
     const openModal = (product) => {
         setSelectedProduct(product);
-        setQuantity(1); // Har safar yangi ochilganda 1 tadan boshlanadi
+        setQuantity(1);
     };
 
     const closeModal = () => {
@@ -130,19 +129,13 @@ export default function Bestsellers() {
             {selectedProduct && (
                 <div className="saya-modal-overlay" onClick={closeModal}>
                     <div className="saya-modal-content" onClick={(e) => e.stopPropagation()}>
-
-                        {/* Yopish tugmasi (X) */}
                         <button className="saya-modal-close" onClick={closeModal} aria-label="Close modal">✕</button>
-
-                        {/* Chap tomon: Rasm va Batafsil tugmasi */}
                         <div className="saya-modal-left">
                             <div className="saya-modal-img-container">
                                 <img src={selectedProduct.image} alt={selectedProduct.title} className="saya-modal-img" />
                             </div>
                             <button className="saya-modal-btn-more">Подробнее О Товаре</button>
                         </div>
-
-                        {/* O'ng tomon: Ma'lumotlar palitrasi */}
                         <div className="saya-modal-right">
                             <h3 className="saya-modal-title">{selectedProduct.title}</h3>
                             <div className="saya-modal-price">{selectedProduct.price}</div>
@@ -157,7 +150,6 @@ export default function Bestsellers() {
                                 <p className="saya-modal-text">{selectedProduct.action}</p>
                             </div>
 
-                            {/* Sanoq va Sotib olish hududi */}
                             <div className="saya-modal-actions">
                                 <div className="saya-modal-counter">
                                     <button onClick={() => setQuantity(q => q > 1 ? q - 1 : 1)}>−</button>
@@ -170,23 +162,20 @@ export default function Bestsellers() {
 
                             <hr className="saya-modal-divider" />
 
-                            {/* Meta ma'lumotlar */}
                             <div className="saya-modal-meta">
                                 <div><span className="saya-modal-meta-label">Артикул:</span> {selectedProduct.sku}</div>
                                 <div><span className="saya-modal-meta-label">Категория:</span> {selectedProduct.category}</div>
                             </div>
-
-                            {/* Ijtimoiy tarmoqlar */}
-                            <div className="saya-modal-share">
-                                <span className="saya-modal-meta-label">Поделиться:</span>
-                                <div className="saya-modal-socials">
-                                    <span>f</span>
-                                    <span>𝕏</span>
-                                    <span>℗</span>
-                                    <span>in</span>
-                                    <span>✈</span>
-                                </div>
-                            </div>
+                            {/*<div className="saya-modal-share">*/}
+                            {/*    <span className="saya-modal-meta-label">Поделиться:</span>*/}
+                            {/*    <div className="saya-modal-socials">*/}
+                            {/*        <span>f</span>*/}
+                            {/*        <span>𝕏</span>*/}
+                            {/*        <span>℗</span>*/}
+                            {/*        <span>in</span>*/}
+                            {/*        <span>✈</span>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
                         </div>
 
                     </div>

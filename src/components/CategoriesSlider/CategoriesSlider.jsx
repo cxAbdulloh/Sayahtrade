@@ -17,15 +17,14 @@ export default function CategoriesSlider() {
     const [activeIndex, setActiveIndex] = useState(0);
     const scrollRef = useRef(null);
 
-    // Skrol bo'lganda qaysi element o'rtada turinganini hisoblaydi (Mobil uchun)
+
     const handleScroll = () => {
         if (!scrollRef.current) return;
 
         const { scrollLeft, clientWidth } = scrollRef.current;
-        // Har bir elementning kengligi va bo'shliqlarni hisobga olgan holda indeksni topamiz
+
         const index = Math.round(scrollLeft / (clientWidth / 2));
 
-        // Indeks chegaradan chiqib ketmasligini ta'minlaymiz
         if (index >= 0 && index < categories.length) {
             setActiveIndex(index);
         }
@@ -41,7 +40,6 @@ export default function CategoriesSlider() {
                     </div>
                 </div>
 
-                {/* Kategoriyalar ro'yxati */}
                 <div
                     className="saya-catalog-grid"
                     ref={scrollRef}
@@ -57,7 +55,6 @@ export default function CategoriesSlider() {
                     ))}
                 </div>
 
-                {/* Faqat mobilda ko'rinadigan skrol nuqtalari (Pagination Dots) */}
                 <div className="saya-catalog-dots">
                     {categories.map((_, i) => (
                         <div

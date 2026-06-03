@@ -19,54 +19,44 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0 60px; /* Katta ekranda o'qlar uchun xavfsiz yon bo'shliq */
-    box-sizing: border-box;
+    padding: 0 60px;
 }
 
-/* ==========================================================================
-   SCROLL BO'LADIGAN ASOSIY GRID PANELI
-   ========================================================================== */
 .saya-bestsellers__grid {
     display: flex;
     gap: 24px;
     overflow-x: auto;
     scroll-behavior: smooth;
     width: 100%;
-    padding: 12px 0 24px 0; /* Hover shadow va animatsiya qirqilmasligi uchun */
+    padding: 12px 0 24px 0;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox uchun skrollbarni yashirish */
-    -ms-overflow-style: none;  /* IE va Edge uchun skrollbarni yashirish */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .saya-bestsellers__grid::-webkit-scrollbar {
-    display: none; /* Chrome, Safari va Opera uchun skrollbarni yashirish */
+    display: none;
 }
 
-/* ==========================================================================
-   MAHSULOT KARTASI (BACKGROUND: SOF OQ FNDA)
-   ========================================================================== */
 .saya-bestsellers__card {
-    flex: 0 0 calc(25% - 18px); /* Katta ekranda aniq 4 ta element joylashadi */
+    flex: 0 0 calc(25% - 18px);
     min-width: 280px;
-
     border-radius: 16px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     position: relative;
     box-sizing: border-box;
-    overflow: hidden; /* Hover elementlari pastdan chiroyli ko'tarilishi uchun */
+    overflow: hidden;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Kursor borgandagi zamonaviy va yumshoq soya effekti */
 .saya-bestsellers__card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     border-color: transparent;
 }
 
-/* Mahsulot rasmi qismi */
 .saya-bestsellers__image-wrapper {
     width: 100%;
     height: 220px;
@@ -82,7 +72,7 @@
     object-fit: contain;
 }
 
-/* Yozuvlar qismi */
+
 .saya-bestsellers__info {
     display: flex;
     flex-direction: column;
@@ -95,7 +85,7 @@
     color: #1a1a1a;
     margin: 0 0 8px 0;
     line-height: 1.4;
-    height: 44px; /* 2 qator matn joyini qat'iy ushlab turadi */
+    height: 44px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -111,16 +101,13 @@
 .saya-bestsellers__price {
     font-size: 18px;
     font-weight: 700;
-    color: #4a148c; /* To'q binafsha brend rangi */
-    margin-top: auto; /* Narx doim eng pastki qatorda tekis turadi */
+    color: #4a148c;
 }
 
-/* ==========================================================================
-   HOVER PANEL EFFEKTLARI: V KORZINU VA LUPA
-   ========================================================================== */
+
 .saya-bestsellers__hover-actions {
     position: absolute;
-    bottom: -60px; /* Boshida pastda yashirin turadi */
+    bottom: -60px;
     left: 0;
     width: 100%;
     padding: 0 24px 20px 24px;
@@ -131,20 +118,20 @@
     opacity: 0;
     visibility: hidden;
     transition: bottom 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease, visibility 0.3s;
-    background: linear-gradient(to top, #ffffff 85%, rgba(255, 255, 255, 0) 100%); /* Oq fonga mos gradient */
+    background: linear-gradient(to top, #ffffff 85%, rgba(255, 255, 255, 0) 100%);
 }
 
-/* Kursor borganda panel silliq chiqadi */
+
 .saya-bestsellers__card:hover .saya-bestsellers__hover-actions {
     bottom: 0;
     opacity: 1;
     visibility: visible;
 }
 
-/* "В Корзину" yashil tugmasi */
+
 .saya-bestsellers__btn-cart {
     flex-grow: 1;
-    background-color: #85a996; /* Sage green yashil rang */
+    background-color: #85a996;
     color: #ffffff;
     border: none;
     padding: 12px 0;
@@ -164,7 +151,7 @@
     transform: scale(0.97);
 }
 
-/* Lupa (Quick View) tugmasi */
+
 .saya-bestsellers__btn-view {
     width: 44px;
     height: 44px;
@@ -184,9 +171,6 @@
     color: #4a148c;
 }
 
-/* ==========================================================================
-   NAVIGATSIYA STRELKALARI (DESKTOP)
-   ========================================================================== */
 .saya-bestsellers__arrow {
     position: absolute;
     top: 50%;
@@ -216,9 +200,6 @@
 .saya-bestsellers__arrow--left { left: 0; }
 .saya-bestsellers__arrow--right { right: 0; }
 
-/* ==========================================================================
-   MODAL OYNASI STILLARI
-   ========================================================================== */
 .saya-modal-overlay {
     position: fixed;
     top: 0;
@@ -237,7 +218,7 @@
 }
 
 .saya-modal-content {
-    background-color: #ffffff;
+    background-color: #fff;
     width: 100%;
     max-width: 960px;
     border-radius: 20px;
@@ -473,16 +454,13 @@
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* ==========================================================================
-   RESPONSIVE VARIANTLARI (MEDIA QUERIES)
-   ========================================================================== */
 @media (max-width: 1540px) {
     .saya-bestsellers__container { padding: 0 55px; }
 }
 
 @media (max-width: 1024px) {
     .saya-bestsellers__card {
-        flex: 0 0 calc(50% - 12px); /* Planshetda 2 tadan element */
+        flex: 0 0 calc(50% - 12px);
     }
     .saya-bestsellers__container { padding: 0 50px; }
 }
@@ -508,11 +486,8 @@
     }
 }
 
-/* ==========================================================================
-   MOBILE SCREEN FIX (Rasmda ko'rsatilgan ulkan bo'shliqlarni yo'qotish)
-   ========================================================================== */
+
 @media (max-width: 568px) {
-    /* Konteyner chetidagi ortiqcha bo'shliqlar olinib, tepaga moslandi */
     .saya-bestsellers__container {
         padding: 0 16px;
     }
@@ -523,7 +498,6 @@
         padding-left: 4px;
     }
 
-    /* Slider yonlaridagi o'qlar uchun ajratilgan padding mutlaqo nolga tushirildi */
     .saya-bestsellers__slider-wrapper {
         padding: 0;
     }
@@ -533,15 +507,13 @@
         padding: 4px 0 16px 0;
     }
 
-    /* Karta eni 86% ga kengaytirildi — rasmda qolib ketgan katta bo'shliqlar yopildi */
     .saya-bestsellers__card {
         flex: 0 0 86%;
         min-width: 250px;
         padding: 16px;
-        border-radius: 20px; /* Tepadagi Anti-Age blokining yumshoqligiga mos */
+        border-radius: 20px;
     }
 
-    /* Dorilarning ulkan rasmi ixchamlashtirilib kichraytirildi */
     .saya-bestsellers__image-wrapper {
         height: 140px;
         margin-bottom: 12px;
@@ -552,7 +524,6 @@
         max-height: 85%;
     }
 
-    /* Yozuvlar va matn o'lchamlari mobilda ideal holatga keltirildi */
     .saya-bestsellers__name {
         font-size: 15px;
         height: 40px;
@@ -568,7 +539,6 @@
         font-size: 16px;
     }
 
-    /* Mobilda hover yo'qligi sababli tugmalar doim chiroyli ko'rinib turadi */
     .saya-bestsellers__hover-actions {
         position: static;
         opacity: 1;
@@ -587,8 +557,6 @@
         width: 40px;
         height: 40px;
     }
-
-    /* Navigatsiya o'qlari mobilda yashirildi (qo'lda osongina suriladi) */
     .saya-bestsellers__arrow {
         display: none !important;
     }

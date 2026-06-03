@@ -1,21 +1,16 @@
-/* Asosiy sekshn va shrift sozlamalari */
 .saya-categories {
     padding: 60px 0;
 }
 
-/*
-   TUGMALAR TASHQARIDA BO'LISHI UCHUN:
-   Konteynerning o'zidan ortiqcha paddingni olib tashlaymiz.
-*/
+
 .saya-categories__container {
     max-width: 1500px;
     margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
+    padding: 0 16px;
     position: relative;
 }
 
-/* Sarlavha (Популярные категории) */
+
 .saya-categories__title {
     font-size: 32px;
     font-weight: 600;
@@ -24,21 +19,16 @@
     letter-spacing: -0.5px;
 }
 
-/*
-   --- TO'G'RILANDI: TUGMALAR MUTLAQO TASHQARIDA ---
-   Slider wrapperga 60px yonlama padding berdik. Bu bo'shliq faqat
-   tugmalar uchun xizmat qiladi, natijada kartalar rasm ichiga kirmaydi.
-*/
 .saya-categories__slider-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0 60px; /* Tugma va rasm orasidagi ideal xavfsiz masofa */
+    padding: 0 60px;
     box-sizing: border-box;
 }
 
-/* --- Karta setkasi (Flex-scroll bo'ldi) --- */
+
 .saya-categories__grid {
     display: flex;
     gap: 20px;
@@ -46,19 +36,15 @@
     scroll-behavior: smooth;
     width: 100%;
     padding: 4px 0;
-
-    /* Standart brauzer scrollbarlarini yashirish */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-/* Chrome, Safari va Opera uchun scrollbarni yashirish */
 .saya-categories__grid::-webkit-scrollbar {
     display: none;
 }
 
-/* Alohida Karta (Card) */
 .saya-categories__card {
     flex: 0 0 calc(25% - 15px);
     min-width: 290px;
@@ -77,7 +63,7 @@
     transform: translateY(-2px);
 }
 
-/* Rasm konteyneri */
+
 .saya-categories__image-wrapper {
     width: 80px;
     height: 80px;
@@ -88,14 +74,14 @@
     background-color: #fff;
 }
 
-/* Karta ichidagi rasm */
+
 .saya-categories__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Kategoriya matni */
+
 .saya-categories__name {
     font-size: 14px;
     font-weight: 600;
@@ -108,7 +94,6 @@
     overflow: hidden;
 }
 
-/* --- TO'G'RILANDI: Navigatsiya tugmalari (< va >) --- */
 .saya-categories__arrow {
     position: absolute;
     top: 50%;
@@ -135,10 +120,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/*
-   Tugmalar `0` qiymat bilan wrapper chetiga taqaldi.
-   Padding hisobiga kartalarga yoki rasmlarga aslo tegib ketmaydi.
-*/
 .saya-categories__arrow--left {
     left: 0;
 }
@@ -147,26 +128,25 @@
     right: 0;
 }
 
-/* --- RESPONSIVE --- */
+
 @media (max-width: 1200px) {
     .saya-categories__slider-wrapper {
-        padding: 0 45px; /* Ekran torayganda padding biroz kamayadi */
+        padding: 0 45px;
     }
 }
 
 @media (max-width: 1024px) {
     .saya-categories__card {
-        flex: 0 0 calc(50% - 10px); /* Planshetda 2 tadan element */
+        flex: 0 0 calc(50% - 10px);
     }
     .saya-categories__slider-wrapper {
         padding: 0 40px;
     }
 }
 
-/* 568px dan kichik bo'lganda tugmalar mutlaqo yo'qoladi va sof qo'lda scroll bo'ladi */
 @media (max-width: 568px) {
     .saya-categories__slider-wrapper {
-        padding: 0; /* Mobilda chetdagi ortiqcha bo'shliq shart emas */
+        padding: 0;
     }
     .saya-categories__grid {
         gap: 12px;
@@ -176,7 +156,7 @@
         margin-bottom: 20px;
     }
     .saya-categories__card {
-        flex: 0 0 85%; /* Keyingi karta cheti biroz ko'rinib scrollborligini bildiradi */
+        flex: 0 0 85%;
         min-width: 250px;
         padding: 12px 16px;
     }
@@ -185,7 +165,6 @@
         height: 70px;
         margin-right: 12px;
     }
-    /* SIZ SO'RAGAN O'ZGARISH: Tugmalar butunlay yashirildi */
     .saya-categories__arrow {
         display: none !important;
     }
