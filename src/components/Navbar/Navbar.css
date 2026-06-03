@@ -3,7 +3,30 @@
     margin: auto;
 
 }
+.saya-nav__btn--deals {
+    color: #5B2D8E;
+    font-weight: 600;
+}
 
+.saya-nav__btn--deals:hover {
+    color: #4a2175;
+}
+
+.saya-nav__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 7px;
+    background: #5B2D8E;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    vertical-align: middle;
+}
 .saya-nav__container {
     padding: 0 20px;
     height: 100px;
@@ -497,17 +520,15 @@
     color: #5B2D8E;
 }
 
-/* Ichki konteyner */
 .saya-fullscreen-search__inner {
     width: min(720px, 85vw);
     text-align: center;
 }
 
-/* Input va tugma qutisi */
 .saya-fullscreen-search__box {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #5B2D8E; /* Pastki chiziq brend rangida */
+    border-bottom: 2px solid #5B2D8E;
     padding: 10px 0;
 }
 
@@ -528,7 +549,6 @@
     font-weight: 400;
 }
 
-/* Input ichidagi qidiruv ikonkasi */
 .saya-fullscreen-search__submit {
     background: none;
     border: none;
@@ -545,7 +565,7 @@
     transform: scale(1.1);
 }
 
-/* Input ostidagi eslatma matni */
+
 .saya-fullscreen-search__hint {
     font-size: 13px;
     color: #888;
@@ -553,16 +573,13 @@
     letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   RESPONSIVE MEDIA QUERIES UPDATES
-   ========================================================================== */
+
 @media (max-width: 768px) {
-    /* 768px dan kichrayganda bu katta modal umuman kerak emas */
+
     .saya-fullscreen-search {
         display: none !important;
     }
 
-    /* Navbar ichidagi qidiruv tugmasini yashirish (Chunki u mobil panelda bor) */
     .saya-search-btn {
         display: none !important;
     }

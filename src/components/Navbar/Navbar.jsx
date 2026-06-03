@@ -10,8 +10,6 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [searchVal, setSearchVal] = useState("");
     const [mobileCatalogOpen, setMobileCatalogOpen] = useState(false);
-
-    // Yangi qo'shilgan state: Desktop search modalni boshqarish uchun
     const [searchModalOpen, setSearchModalOpen] = useState(false);
 
     useEffect(() => {
@@ -20,39 +18,25 @@ export default function Navbar() {
             setCatalogOpen(false);
             setAboutOpen(false);
         };
-
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    // Modal ochilganda orqadagi asosiy sahifa skrol bo'lmasligi uchun (UX yaxshilash)
-    useEffect(() => {
-        if (searchModalOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "unset";
-        }
-    }, [searchModalOpen]);
-
-    // Modal yoki Mobil menyu ochilganda orqadagi asosiy sahifa skrol bo'lmasligi uchun
     useEffect(() => {
         if (searchModalOpen || mobileOpen) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "unset";
         }
-
-        // Komponent unmount bo'lganda skrolni qayta tiklash (Tozalash funksiyasi)
-        return () => {
-            document.body.style.overflow = "unset";
-        };
-    }, [searchModalOpen, mobileOpen]); // Ikkala stateni ham kuzatamiz
+        return () => { document.body.style.overflow = "unset"; };
+    }, [searchModalOpen, mobileOpen]);
 
     return (
         <>
-            {/* MOBIL BACKDROP VA DRAWER (O'zgarishsiz qoladi) */}
+            {/* MOBILE BACKDROP */}
             {mobileOpen && <div className="saya-mobile-backdrop" onClick={() => setMobileOpen(false)} />}
 
+            {/* MOBILE DRAWER */}
             <div className={`saya-mobile-drawer${mobileOpen ? " open" : ""}`}>
                 <div className="saya-mobile-drawer__search-bar">
                     <input
@@ -63,9 +47,7 @@ export default function Navbar() {
                         className="saya-mobile-drawer__search-input"
                     />
                     {searchVal && (
-                        <button className="saya-mobile-drawer__search-clear" onClick={() => setSearchVal("")}>
-                            ×
-                        </button>
+                        <button className="saya-mobile-drawer__search-clear" onClick={() => setSearchVal("")}>×</button>
                     )}
                     <div className="saya-mobile-drawer__search-divider"></div>
                     <button className="saya-mobile-drawer__search-submit">
@@ -76,6 +58,7 @@ export default function Navbar() {
                 </div>
 
                 <nav className="saya-mobile-drawer__nav">
+                    {/* Каталог */}
                     <div>
                         <button className="saya-mobile-item__btn" onClick={() => setMobileCatalogOpen(!mobileCatalogOpen)}>
                             Каталог <span className={`saya-mobile-item__arrow${mobileCatalogOpen ? " open" : ""}`}><img src={assets.arrow} alt="" style={{ width: "10px", height: "auto", filter: "opacity(0.4)" }}/></span>
@@ -104,16 +87,20 @@ export default function Navbar() {
                     <Link to="/about" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>О Компании</Link>
                     <Link to="/" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>Блог</Link>
                     <Link to="/contact" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>Контакты</Link>
+
+                    {/* ✅ YANGI: Где купить — mobile */}
+                    <Link to="/wheretobuy" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>Где купить</Link>
+
+                    {/* ✅ YANGI: Скидки — mobile */}
+                    <Link to="/discounts" className="saya-mobile-item__btn" style={{display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none'}}>
+                        Скидки
+                        <span className="saya-nav__badge">Акция</span>
+                    </Link>
+
                     <Link
                         to="/my-account"
                         className="saya-mobile-item__btn"
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            gap: '12px',
-                            textDecoration: 'none'
-                        }}
+                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '12px', textDecoration: 'none' }}
                     >
                         <img src={assets.icon_3} alt="Login" style={{ width: '18px', height: 'auto', display: 'block' }} />
                         <span style={{ fontWeight: '600' }}>Вход / регистрация</span>
@@ -121,11 +108,9 @@ export default function Navbar() {
                 </nav>
             </div>
 
-            {/* FULL SCREEN SEARCH MODAL (Pasdan tepaga chiroyli effekt bilan chiqadi) */}
+            {/* FULLSCREEN SEARCH MODAL */}
             <div className={`saya-fullscreen-search${searchModalOpen ? " open" : ""}`}>
-                {/* Modalni yopish tugmasi */}
                 <button className="saya-fullscreen-search__close" onClick={() => setSearchModalOpen(false)}>×</button>
-
                 <div className="saya-fullscreen-search__inner">
                     <div className="saya-fullscreen-search__box">
                         <input
@@ -134,7 +119,7 @@ export default function Navbar() {
                             value={searchVal}
                             onChange={(e) => setSearchVal(e.target.value)}
                             className="saya-fullscreen-search__input"
-                            autoFocus={searchModalOpen} // Modal ochilganda avtomatik fokus tushishi uchun
+                            autoFocus={searchModalOpen}
                         />
                         <button className="saya-fullscreen-search__submit">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -146,7 +131,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* MAIN DESKTOP NAVBAR */}
+            {/* DESKTOP NAVBAR */}
             <nav className={`saya-nav${scrolled ? " scrolled" : ""}`}>
                 <div className="saya-nav__container">
 
@@ -155,7 +140,7 @@ export default function Navbar() {
                     </button>
 
                     <div className="saya-nav__left">
-                        {/* Каталог Dropdown qismi (O'zgarishsiz qoladi) */}
+                        {/* Каталог Dropdown */}
                         <div
                             className="saya-dropdown-wrap"
                             onMouseEnter={() => setCatalogOpen(true)}
@@ -164,12 +149,11 @@ export default function Navbar() {
                             <button className={`saya-nav__btn${catalogOpen ? " active" : ""}`}>
                                 Каталог <span className="arrow"><img src={assets.arrow} alt="arrow" style={{ width: "10px", height: "auto", filter: "opacity(0.4)" }} /></span>
                             </button>
-
                             <div className={`saya-dropdown-overlay${catalogOpen ? " open" : ""}`}>
                                 <div className="saya-dropdown-overlay__inner">
                                     <div className="saya-dropdown-overlay__grid">
                                         {[
-                                            { label: "Витамины и minerali", icon: "https://sayatrade.uz/wp-content/uploads/2025/07/vitamins.svg" },
+                                            { label: "Витамины и минералы", icon: "https://sayatrade.uz/wp-content/uploads/2025/07/vitamins.svg" },
                                             { label: "Женское здоровье", icon: "https://sayatrade.uz/wp-content/uploads/2025/07/womenhealth.svg" },
                                             { label: "Здоровье сердца, сосудов, вен", icon: "https://sayatrade.uz/wp-content/uploads/2025/07/heart.svg" },
                                             { label: "Лечебные чаи", icon: "https://sayatrade.uz/wp-content/uploads/2025/07/teas.svg" },
@@ -190,7 +174,7 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        {/* О нас Dropdown qismi (O'zgarishsiz qoladi) */}
+                        {/* О нас Dropdown */}
                         <div
                             className="saya-dropdown-wrap"
                             onMouseEnter={() => setAboutOpen(true)}
@@ -199,14 +183,13 @@ export default function Navbar() {
                             <button className={`saya-nav__btn${aboutOpen ? " active" : ""}`}>
                                 О нас <span className="arrow"><img src={assets.arrow} alt="arrow" style={{ width: "10px", height: "auto", filter: "opacity(0.4)" }} /></span>
                             </button>
-
                             <div className={`saya-dropdown-overlay${aboutOpen ? " open" : ""}`}>
                                 <div className="saya-dropdown-overlay__inner">
                                     <div className="saya-dropdown-overlay__grid">
                                         {[
                                             { label: "О Компания", path: "/about" },
                                             { label: "Контакты", path: "/contact" },
-                                            { label: "Новости" }
+                                            { label: "Новости", path: "/" }
                                         ].map((item, i) => (
                                             <Link key={i} to={item.path} className="saya-dropdown-overlay__item" onClick={() => setAboutOpen(false)}>
                                                 {item.label}
@@ -217,7 +200,18 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        {/* Qidiruv tugmasi (Bosilganda modalni ochadi) */}
+                        {/* ✅ YANGI: Где купить */}
+                        <Link to="/wheretobuy" className="saya-nav__btn" style={{ textDecoration: 'none' }}>
+                            Где купить
+                        </Link>
+
+                        {/* ✅ YANGI: Скидки badge bilan */}
+                        <Link to="/discounts" className="saya-nav__btn saya-nav__btn--deals" style={{ textDecoration: 'none' }}>
+                            Скидки
+                            <span className="saya-nav__badge">Акция</span>
+                        </Link>
+
+                        {/* Search */}
                         <button className="saya-search-btn" onClick={() => setSearchModalOpen(true)}>
                             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>

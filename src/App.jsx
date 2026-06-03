@@ -9,6 +9,7 @@ import CategoriesSlider from "./components/CategoriesSlider/CategoriesSlider.jsx
 import Contact from "./pages/Contact/Contact.jsx";
 import ContactWithUs from "./pages/ContactWithUs/ContactWithUs.jsx";
 import AboutUs from "./pages/AboutUs/AboutUs.jsx";
+import WhereToBuy from "./pages/WheretoBuy/WheretoBuy.jsx";
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact/>} />
                 <Route path="/contactwithus" element={<ContactWithUs/>} />
                 <Route path="/about" element={<AboutUs/>} />
+                <Route path="/wheretobuy" element={<WhereToBuy/>} />
             </Routes>
             <Footer />
             <NavBottom />
