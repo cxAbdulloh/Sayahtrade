@@ -3,8 +3,8 @@
     overflow: hidden;
     border-radius: 30px;
     max-width: 1500px;
-    margin: 0  16px auto;
-
+    margin: 0  auto;
+    padding:  0 16px;
 }
 
 .saya-features__container {

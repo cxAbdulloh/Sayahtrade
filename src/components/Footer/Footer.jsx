@@ -4,16 +4,12 @@ import { assets } from "../../assets/assets.js";
 import {Link} from "react-router-dom";
 
 export default function Footer() {
-    // Rasm yuklanishida xatolik bo'lganini tekshirish uchun state
     const [logoError, setLogoError] = useState(false);
 
     return (
         <footer className="saya-footer-section">
             <div className="saya-footer-container">
-
-                {/* 1. YUQORI OQ KARTA (INFO BOX) */}
                 <div className="saya-footer__info-card">
-                    {/* Chap ustun: Savollar */}
                     <div className="saya-footer__info-col">
                         <h3 className="saya-footer__info-title">У Вас остались вопросы?</h3>
                         <Link to="/contactwithus" className="saya-footer__info-btn">
@@ -25,19 +21,17 @@ export default function Footer() {
                         </Link>
                     </div>
 
-                    {/* O'rta ustun: Manzil */}
                     <div className="saya-footer__info-col">
                         <h3 className="saya-footer__info-title">Ташкент, ул. Навнихол, 3</h3>
                         <Link to="/contact" className="saya-footer__info-link">Локация</Link>
                     </div>
 
-                    {/* O'ng ustun: Ijtimoiy tarmoqlar */}
                     <div className="saya-footer__info-col">
                         <h3 className="saya-footer__info-title">Следите наши каналы:</h3>
                         <div className="saya-footer__socials">
-                            <a href="#facebook" className="saya-footer__social-item" aria-label="Facebook">f</a>
-                            <a href="#twitter" className="saya-footer__social-item" aria-label="Twitter">X</a>
-                            <a href="#instagram" className="saya-footer__social-item" aria-label="Instagram">
+                            <a href="#" className="saya-footer__social-item" aria-label="Facebook">f</a>
+                            <a href="#" className="saya-footer__social-item" aria-label="Twitter">X</a>
+                            <a href="#" className="saya-footer__social-item" aria-label="Instagram">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -48,22 +42,18 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* 2. ASOSIY FOOTER KATTA QISMI */}
+
                 <div className="saya-footer__main">
                     <div className="saya-footer__brand-block">
-
-                        {/* Brend Logotipi qismi */}
                         <div className="saya-footer__logo-box">
                             {!logoError ? (
-                                // Asosiy internetdan keladigan rasm
                                 <img
                                     src="https://sayatrade.uz/wp-content/uploads/2024/11/logo.png"
                                     alt="SAYA Health Trade"
                                     className="saya-footer__logo-img"
-                                    onError={() => setLogoError(true)} // Xato bo'lsa stateni o'zgartiradi
+                                    onError={() => setLogoError(true)}
                                 />
                             ) : (
-                                // Agar internetdagi rasm ishlamasa, assets ichidagi mahalliy rasm chiqadi
                                 <div className="saya-footer__logo-fallback">
                                     {assets?.footer_logo ? (
                                         <img src={assets.footer_logo} alt="SAYA Logo" className="saya-footer__logo-img" />
@@ -74,7 +64,6 @@ export default function Footer() {
                             )}
                         </div>
 
-                        {/* Brend haqida matn */}
                         <p className="saya-footer__description">
                             Лучшие витамины и добавки изготовлены из натуральных ингредиентов
                             с использованием современных технологий, направленных на улучшение
@@ -85,7 +74,6 @@ export default function Footer() {
 
             </div>
 
-            {/* 3. ENG PASTKI HUQUQLAR QISMI (COPYRIGHT) */}
             <div className="saya-footer__bottom">
                 <div className="saya-footer__bottom-container">
                     <span>SayaTrade © 2026</span>

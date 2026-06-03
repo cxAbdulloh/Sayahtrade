@@ -1,6 +1,6 @@
 .saya-footer-section {
-    background-color: #0d0d0d; /* To'q qora rangli fon */
-    padding: 60px 0 0 0; /* Pastki chiziq o'zi padding bo'ladi */
+    background-color: #0d0d0d;
+    padding: 60px 0 0 0;
     position: relative;
 }
 
@@ -10,12 +10,11 @@
     padding: 0 40px;
 }
 
-/* --- 1. YUQORI OQ KARTA (INFO BOX) --- */
 .saya-footer__info-card {
     background-color: #ffffff;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 1.1fr 1fr 1fr; /* 3 ta teng yoki mutanosib ustun */
+    grid-template-columns: 1.1fr 1fr 1fr;
     padding: 40px 0;
     margin-bottom: 60px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -28,7 +27,7 @@
     justify-content: center;
 }
 
-/* Ustunlar orasidagi ingichka chegaralar */
+
 .saya-footer__info-col:not(:last-child) {
     border-right: 1px solid #eaeaea;
 }
@@ -41,13 +40,12 @@
     letter-spacing: -0.5px;
 }
 
-/* Konsultatsiya tugmasi */
 .saya-footer__info-btn {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    background-color: #4c0e75; /* Rasmdagi xarakterli binafsha */
+    background-color: #4c0e75;
     color: #ffffff;
     border: none;
     padding: 14px 24px;
@@ -65,7 +63,6 @@
     transform: translateY(-1px);
 }
 
-/* Lokatsiya ssilkasi */
 .saya-footer__info-link {
     font-size: 16px;
     font-weight: 600;
@@ -74,7 +71,6 @@
     width: max-content;
 }
 
-/* Ijtimoiy tarmoq doirachalari */
 .saya-footer__socials {
     display: flex;
     align-items: center;
@@ -101,7 +97,6 @@
     color: #ffffff;
 }
 
-/* --- 2. MAIN FOOTER (LOGO VA DESCRIPTION) --- */
 .saya-footer__main {
     padding-bottom: 60px;
 }
@@ -112,18 +107,16 @@
     gap: 60px;
 }
 
-/* Logo va tagidagi oltin yozuv */
 .saya-footer__logo-box {
     flex-shrink: 0;
 }
 
 .saya-footer__logo-img {
-    height: 80px; /* Logotip balandligi */
+    height: 80px;
     display: block;
     margin-bottom: 8px;
 }
 
-/* Agar rasm bo'lmasa ishlaydigan tekstli muqobil dizayn */
 .saya-footer__logo-fallback {
     color: #ffffff;
     font-weight: 800;
@@ -133,18 +126,16 @@
 }
 
 
-/* Brend ta'rifi */
 .saya-footer__description {
     font-size: 15px;
     font-weight: 400;
     line-height: 1.6;
-    color: #a0a0a0; /* Och qora fondagi o'qilishi qulay kulrang */
+    color: #a0a0a0;
     max-width: 540px;
     margin: 0;
     padding-top: 4px;
 }
 
-/* --- 3. HUQUQLAR CHIZIQLARI (COPYRIGHT) --- */
 .saya-footer__bottom {
     border-top: 1px solid #1f1f1f;
     padding: 24px 0;
@@ -160,10 +151,9 @@
     font-weight: 500;
 }
 
-/* --- RESPONSIVE (IDEAL MOSLASHUVCHANLIK) --- */
 @media (max-width: 1120px) {
     .saya-footer__info-card {
-        grid-template-columns: 1fr; /* Oq karta elementlari ustma-ust tushadi */
+        grid-template-columns: 1fr;
         padding: 20px 0;
         gap: 0;
     }
@@ -172,7 +162,7 @@
     }
     .saya-footer__info-col:not(:last-child) {
         border-right: none;
-        border-bottom: 1px solid #f0f0f0; /* Yon chiziqlar pastga ko'chadi */
+        border-bottom: 1px solid #f0f0f0;
     }
     .saya-footer__brand-block {
         flex-direction: column;
@@ -195,7 +185,7 @@
         margin-bottom: 14px;
     }
     .saya-footer__info-btn {
-        width: 100%; /* Mobilda tugma to'liq eni bo'ylab cho'ziladi */
+        width: 100%;
     }
     .saya-footer__bottom-container {
         padding: 0 20px;
