@@ -69,14 +69,14 @@ export default function WhereToBuy() {
         <section className="wtb-section">
             <div className="wtb-container">
 
-                {/* Header */}
+
                 <div className="wtb-header">
                     <span className="wtb-header__tag">Наличие товаров</span>
                     <h2 className="wtb-header__title">Где купить</h2>
                     <p className="wtb-header__sub">Наши продукты доступны на ведущих маркетплейсах и в аптеках Узбекистана</p>
                 </div>
 
-                {/* Маркетплейсы */}
+
                 <div className="wtb-group">
                     <div className="wtb-group__label">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B2D8E" strokeWidth="2" strokeLinecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -99,7 +99,7 @@ export default function WhereToBuy() {
                     </div>
                 </div>
 
-                {/* Аптеки */}
+
                 <div className="wtb-group">
                     <div className="wtb-group__label">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B2D8E" strokeWidth="2" strokeLinecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
