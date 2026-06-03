@@ -76,7 +76,7 @@ export default function Navbar() {
                                 { label: "Внимания и работы мозга", icon: "https://sayatrade.uz/wp-content/uploads/2025/07/brain.svg" },
                                 { label: "Здоровье суставов и костей", icon: "https://sayatrade.uz/wp-content/uploads/2025/07/bone.svg" }
                             ].map((item, i) => (
-                                <a key={i} href="#" className="saya-mobile-item__link">
+                                <a key={i} href="#" className="saya-mobile-item__link" onClick={() => setMobileOpen(false)}>
                                     <img src={item.icon} alt={item.label} width={24} height={24} />
                                     {item.label}
                                 </a>
@@ -84,23 +84,19 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <Link to="/about" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>О Компании</Link>
-                    <Link to="/" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>Блог</Link>
-                    <Link to="/contact" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>Контакты</Link>
-
-                    {/* ✅ YANGI: Где купить — mobile */}
-                    <Link to="/wheretobuy" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}}>Где купить</Link>
-
-                    {/* ✅ YANGI: Скидки — mobile */}
-                    <Link to="/discounts" className="saya-mobile-item__btn" style={{display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none'}}>
+                    <Link to="/about" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>О Компании</Link>
+                    <Link to="/" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>Блог</Link>
+                    <Link to="/contact" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>Контакты</Link>
+                    <Link to="/wheretobuy" className="saya-mobile-item__btn" style={{display: 'block', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>Где купить</Link>
+                    <Link to="/discounts" className="saya-mobile-item__btn" style={{display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none'}} onClick={() => setMobileOpen(false)}>
                         Скидки
                         <span className="saya-nav__badge">Акция</span>
                     </Link>
-
                     <Link
                         to="/my-account"
                         className="saya-mobile-item__btn"
                         style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '12px', textDecoration: 'none' }}
+                        onClick={() => setMobileOpen(false)}
                     >
                         <img src={assets.icon_3} alt="Login" style={{ width: '18px', height: 'auto', display: 'block' }} />
                         <span style={{ fontWeight: '600' }}>Вход / регистрация</span>
