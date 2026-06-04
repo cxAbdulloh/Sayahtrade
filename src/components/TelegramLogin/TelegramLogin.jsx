@@ -3,47 +3,93 @@ import { useTelegramAuth } from "../../hooks/useTelegramAuth.js";
 import { db } from "../../firebase/firebase.js";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import "./TelegramLogin.css";
-import {Link} from "react-router-dom";
+
+const LANGS = [
+    { code: "ru", label: "Русский", flag: "🇷🇺" },
+    { code: "uz", label: "O'zbek", flag: "🇺🇿" },
+];
+
+const HEADER_COLORS = [
+    { label: "Фиолетовый", value: "linear-gradient(135deg, #5B2D8E, #8B5CF6)" },
+    { label: "Зелёный", value: "linear-gradient(135deg, #2D7A4F, #4ade80)" },
+    { label: "Синий", value: "linear-gradient(135deg, #1e40af, #60a5fa)" },
+    { label: "Золотой", value: "linear-gradient(135deg, #92400e, #C9A84C)" },
+    { label: "Чёрный", value: "linear-gradient(135deg, #111, #444)" },
+];
 
 export default function TelegramLogin() {
     const { tgUser, loading } = useTelegramAuth();
-    const [status, setStatus] = useState("idle"); // idle | loading | registered | existing
+    const [status, setStatus] = useState("idle");
     const [userData, setUserData] = useState(null);
+    const [lang, setLang] = useState("ru");
+    const [headerColor, setHeaderColor] = useState(HEADER_COLORS[0].value);
+    const [showColorPicker, setShowColorPicker] = useState(false);
+
+    const t = {
+        ru: {
+            welcome: "Добро пожаловать!",
+            orders: "Мои заказы",
+            language: "Язык",
+            logout: "Выйти",
+            create: "Создать аккаунт",
+            creating: "Создаём...",
+            profile: "Профиль",
+            status: "Активен",
+            changeColor: "Изменить цвет",
+            notTg: "Откройте в Telegram",
+            notTgDesc: "Это приложение доступно только через Telegram Mini App",
+            loading: "Загрузка...",
+            goShop: "Перейти в магазин",
+            createDesc: "Зарегистрируйтесь, чтобы делать заказы и получать скидки",
+            created: "🎉 Аккаунт создан!",
+        },
+        uz: {
+            welcome: "Xush kelibsiz!",
+            orders: "Buyurtmalarim",
+            language: "Til",
+            logout: "Chiqish",
+            create: "Akkaunt yaratish",
+            creating: "Yaratilmoqda...",
+            profile: "Profil",
+            status: "Faol",
+            changeColor: "Rangni o'zgartirish",
+            notTg: "Telegramda oching",
+            notTgDesc: "Bu ilova faqat Telegram Mini App orqali mavjud",
+            loading: "Yuklanmoqda...",
+            goShop: "Do'konga o'tish",
+            createDesc: "Buyurtma berish va chegirmalar olish uchun ro'yxatdan o'ting",
+            created: "🎉 Akkaunt yaratildi!",
+        },
+    };
+    const T = t[lang];
 
     useEffect(() => {
         if (!tgUser) return;
-
         const checkUser = async () => {
             setStatus("loading");
             try {
                 const userRef = doc(db, "telegram_users", String(tgUser.id));
                 const existing = await getDoc(userRef);
-
                 if (existing.exists()) {
-                    // Foydalanuvchi allaqachon ro'yxatdan o'tgan
                     setUserData(existing.data());
                     setStatus("existing");
-                    // lastSeen yangilash
                     await setDoc(userRef, { lastSeen: serverTimestamp() }, { merge: true });
                 } else {
-                    setStatus("new"); // Yangi foydalanuvchi — register ko'rsinsin
+                    setStatus("new");
                 }
-            } catch (err) {
-                console.error("Firestore error:", err);
+            } catch {
                 setStatus("error");
             }
         };
-
         checkUser();
     }, [tgUser]);
 
-    // Register tugmasi bosilganda
     const handleRegister = async () => {
         if (!tgUser) return;
         setStatus("loading");
         try {
             const userRef = doc(db, "telegram_users", String(tgUser.id));
-            await setDoc(userRef, {
+            const data = {
                 telegramId: tgUser.id,
                 firstName: tgUser.firstName,
                 lastName: tgUser.lastName,
@@ -51,156 +97,151 @@ export default function TelegramLogin() {
                 photoUrl: tgUser.photoUrl,
                 createdAt: serverTimestamp(),
                 lastSeen: serverTimestamp(),
-            });
-            setUserData({
-                telegramId: tgUser.id,
-                firstName: tgUser.firstName,
-                lastName: tgUser.lastName,
-                username: tgUser.username,
-                photoUrl: tgUser.photoUrl,
-            });
+            };
+            await setDoc(userRef, data);
+            setUserData(data);
             setStatus("registered");
-        } catch (err) {
-            console.error("Register error:", err);
+        } catch {
             setStatus("error");
         }
     };
 
-    // ── Loading ──
-    if (loading || status === "loading") {
+    if (loading || status === "idle" || status === "loading") {
         return (
-            <div className="tg-login">
-                <div className="tg-login__loading">
-                    <div className="tg-login__spinner" />
-                    <span>Загрузка...</span>
+            <div className="tgp-wrap">
+                <div className="tgp-loading">
+                    <div className="tgp-spinner" />
+                    <span>{T.loading}</span>
                 </div>
             </div>
         );
     }
 
-    // ── Telegram da emas ──
     if (!tgUser) {
         return (
-            <div className="tg-login">
-                <div className="tg-login__not-tg">
-                    <div className="tg-login__icon">📱</div>
-                    <h3>Откройте в Telegram</h3>
-                    <p>Это приложение доступно только через Telegram Mini App</p>
+            <div className="tgp-wrap">
+                <div className="tgp-not-tg">
+                    <span>📱</span>
+                    <h3>{T.notTg}</h3>
+                    <p>{T.notTgDesc}</p>
                 </div>
             </div>
         );
     }
 
     const fullName = [tgUser.firstName, tgUser.lastName].filter(Boolean).join(" ");
-    const initials = [tgUser.firstName?.[0], tgUser.lastName?.[0]]
-        .filter(Boolean).join("").toUpperCase() || "U";
+    const initials = [tgUser.firstName?.[0], tgUser.lastName?.[0]].filter(Boolean).join("").toUpperCase() || "U";
 
-    const displayData = userData || tgUser;
-    const displayName = [displayData.firstName, displayData.lastName].filter(Boolean).join(" ") || fullName;
-
-    // ── Yangi foydalanuvchi — Register ──
+    // ── Yangi foydalanuvchi ──
     if (status === "new") {
         return (
-            <div className="tg-login">
-                <div className="tg-login__card">
-                    <div className="tg-login__avatar">
-                        {tgUser.photoUrl ? (
-                            <img src={tgUser.photoUrl} alt={fullName} />
-                        ) : (
-                            <div className="tg-login__avatar-placeholder">{initials}</div>
-                        )}
-                    </div>
-
-                    <div className="tg-login__welcome">
-                        <span className="tg-login__greeting">Привет, {tgUser.firstName}! 👋</span>
-                        <h2 className="tg-login__name">Создайте аккаунт</h2>
-                        <p className="tg-login__desc">
-                            Зарегистрируйтесь, чтобы делать заказы, отслеживать доставку и получать скидки
-                        </p>
-                    </div>
-
-                    <div className="tg-login__register-info">
-                        <div className="tg-login__info-item">
-                            <span className="tg-login__info-label">Имя</span>
-                            <span className="tg-login__info-value">{fullName}</span>
+            <div className="tgp-wrap">
+                <div className="tgp-card">
+                    <div className="tgp-header" style={{ background: headerColor }}>
+                        <div className="tgp-avatar">
+                            {tgUser.photoUrl
+                                ? <img src={tgUser.photoUrl} alt={fullName} />
+                                : <div className="tgp-avatar__placeholder">{initials}</div>
+                            }
                         </div>
-                        {tgUser.username && (
-                            <div className="tg-login__info-item">
-                                <span className="tg-login__info-label">Username</span>
-                                <span className="tg-login__info-value">@{tgUser.username}</span>
-                            </div>
-                        )}
-                        <div className="tg-login__info-item">
-                            <span className="tg-login__info-label">Telegram ID</span>
-                            <span className="tg-login__info-value">{tgUser.id}</span>
+                        <div className="tgp-header__info">
+                            <span className="tgp-header__greeting">Привет, {tgUser.firstName}! 👋</span>
+                            <h2 className="tgp-header__name">{fullName}</h2>
+                            {tgUser.username && <span className="tgp-header__username">@{tgUser.username}</span>}
                         </div>
                     </div>
 
-                    <button className="tg-login__btn" onClick={handleRegister}>
-                        Создать аккаунт
-                    </button>
-
-                    <p className="tg-login__note">
-                        Данные берутся из вашего Telegram профиля
-                    </p>
+                    <div className="tgp-body">
+                        <p className="tgp-create-desc">{T.createDesc}</p>
+                        <button className="tgp-create-btn" onClick={handleRegister}>
+                            {T.create}
+                        </button>
+                    </div>
                 </div>
             </div>
         );
     }
 
-    // ── Profil (existing yoki registered) ──
+    // ── Profil ──
     return (
-        <div className="tg-login">
-            <div className="tg-login__card">
+        <div className="tgp-wrap">
+            <div className="tgp-card">
 
-                {/* Avatar */}
-                <div className="tg-login__avatar">
-                    {tgUser.photoUrl ? (
-                        <img src={tgUser.photoUrl} alt={displayName} />
-                    ) : (
-                        <div className="tg-login__avatar-placeholder">{initials}</div>
-                    )}
-                    <div className="tg-login__avatar-badge">✓</div>
-                </div>
-
-                {/* Welcome */}
-                <div className="tg-login__welcome">
-                    {status === "registered" && (
-                        <span className="tg-login__new-badge">🎉 Аккаунт создан!</span>
-                    )}
-                    <span className="tg-login__greeting">Добро пожаловать!</span>
-                    <h2 className="tg-login__name">{displayName}</h2>
-                    {tgUser.username && (
-                        <span className="tg-login__username">@{tgUser.username}</span>
-                    )}
-                </div>
-
-                {/* Info */}
-                <div className="tg-login__register-info">
-                    <div className="tg-login__info-item">
-                        <span className="tg-login__info-label">Telegram ID</span>
-                        <span className="tg-login__info-value">{tgUser.id}</span>
+                {/* Header */}
+                <div className="tgp-header" style={{ background: headerColor }}>
+                    <div className="tgp-header__top">
+                        <span className="tgp-header__title">{T.profile}</span>
+                        <button className="tgp-color-btn" onClick={() => setShowColorPicker(!showColorPicker)}>
+                            🎨
+                        </button>
                     </div>
-                    {tgUser.username && (
-                        <div className="tg-login__info-item">
-                            <span className="tg-login__info-label">Username</span>
-                            <span className="tg-login__info-value">@{tgUser.username}</span>
+
+                    {/* Color picker */}
+                    {showColorPicker && (
+                        <div className="tgp-color-picker">
+                            {HEADER_COLORS.map((c) => (
+                                <button
+                                    key={c.value}
+                                    className={`tgp-color-dot${headerColor === c.value ? " active" : ""}`}
+                                    style={{ background: c.value }}
+                                    onClick={() => { setHeaderColor(c.value); setShowColorPicker(false); }}
+                                    title={c.label}
+                                />
+                            ))}
                         </div>
                     )}
-                    <div className="tg-login__info-item">
-                        <span className="tg-login__info-label">Статус</span>
-                        <span className="tg-login__info-value tg-login__info-value--green">✓ Активен</span>
+
+                    <div className="tgp-header__user">
+                        <div className="tgp-avatar">
+                            {tgUser.photoUrl
+                                ? <img src={tgUser.photoUrl} alt={fullName} />
+                                : <div className="tgp-avatar__placeholder">{initials}</div>
+                            }
+                            <div className="tgp-avatar__badge">✓</div>
+                        </div>
+                        <div className="tgp-header__info">
+                            {status === "registered" && <span className="tgp-new-badge">🎉 {T.created}</span>}
+                            <span className="tgp-header__greeting">{T.welcome}</span>
+                            <h2 className="tgp-header__name">{fullName}</h2>
+                            {tgUser.username && <span className="tgp-header__username">@{tgUser.username}</span>}
+                        </div>
                     </div>
                 </div>
 
-                {/* CTA */}
-                <Link to="/shop"
-                    className="tg-login__btn"
-                    onClick={() => window.Telegram?.WebApp?.close()}
-                >
-                    Перейти в магазин
-                </Link>
+                {/* Body */}
+                <div className="tgp-body">
 
+                    {/* Buyurtmalar */}
+                    <div className="tgp-menu">
+                        <button className="tgp-menu-item">
+                            <span className="tgp-menu-item__icon">🛍️</span>
+                            <span className="tgp-menu-item__label">{T.orders}</span>
+                            <span className="tgp-menu-item__arrow">›</span>
+                        </button>
+                    </div>
+
+                    {/* Til */}
+                    <div className="tgp-section">
+                        <span className="tgp-section__label">{T.language}</span>
+                        <div className="tgp-lang-btns">
+                            {LANGS.map((l) => (
+                                <button
+                                    key={l.code}
+                                    className={`tgp-lang-btn${lang === l.code ? " active" : ""}`}
+                                    onClick={() => setLang(l.code)}
+                                >
+                                    {l.flag} {l.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Chiqish */}
+                    <button className="tgp-logout-btn" onClick={() => window.Telegram?.WebApp?.close()}>
+                        {T.logout}
+                    </button>
+
+                </div>
             </div>
         </div>
     );
