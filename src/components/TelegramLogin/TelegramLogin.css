@@ -183,6 +183,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
 }
 
 .tg-login__btn:hover {
