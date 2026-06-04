@@ -229,3 +229,46 @@
         padding-left: 20px;
     }
 }
+/* LoginSection.css ga QO'SHIB QO'YING (oxiriga paste qiling) */
+
+.auth-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.auth-message--error {
+    background: #fdecea;
+    color: #c0392b;
+    border: 1px solid #f5c6c6;
+}
+
+.auth-message--success {
+    background: #e8f5ee;
+    color: #2d7a4f;
+    border: 1px solid #b8dfc9;
+}
+
+.forgot-btn {
+    background: none;
+    border: none;
+    color: #5b2d8e;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+}
+
+.forgot-btn:hover {
+    text-decoration: underline;
+}
+
+.main-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
