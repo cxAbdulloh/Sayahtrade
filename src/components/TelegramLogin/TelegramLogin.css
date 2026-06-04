@@ -183,7 +183,6 @@
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
-    text-decoration: none;
 }
 
 .tg-login__btn:hover {
@@ -234,4 +233,43 @@
     gap: 12px;
     color: #888;
     font-size: 14px;
+}
+
+/* ── Register info block ── */
+.tg-login__register-info {
+    width: 100%;
+    background: #fafafa;
+    border: 1px solid #f0eaf8;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.tg-login__desc {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.6;
+    margin: 4px 0 0;
+    max-width: 280px;
+}
+
+.tg-login__note {
+    font-size: 11px;
+    color: #bbb;
+    margin: 0;
+    text-align: center;
+}
+
+.tg-login__new-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    background: #e8f5ee;
+    color: #2D7A4F;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.tg-login__info-value--green {
+    color: #2D7A4F !important;
 }
