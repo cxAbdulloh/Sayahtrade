@@ -1,332 +1,202 @@
-* { box-sizing: border-box; }
 
-.tgp-wrap {
+.tgl-container {
     min-height: 100vh;
-    background: #f4f0fa;
+    background: #f4f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ── Login Card ── */
+.tgl-card {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 0 80px;
 }
 
-/* ── Card ── */
-.tgp-card {
-    width: 100%;
-    max-width: 480px;
-    background: #fff;
-    border-radius: 0 0 20px 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 24px rgba(91,45,142,0.1);
+.tgl-card--error {
+    background: #fffefe;
+    border: 1px solid rgba(255, 59, 48, 0.1);
 }
 
-/* ── Header ── */
-.tgp-header {
-    padding: 20px 20px 28px;
-    color: #fff;
+/* ── Avatar Section ── */
+.tgl-avatar-wrap {
     position: relative;
-}
-
-.tgp-header__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.tgp-header__title {
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-}
-
-.tgp-color-btn {
-    background: rgba(255,255,255,0.2);
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 17px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-}
-
-.tgp-color-btn:hover { background: rgba(255,255,255,0.3); }
-
-/* Color picker */
-.tgp-color-picker {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-
-.tgp-color-dot {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    cursor: pointer;
-    transition: transform 0.15s, border-color 0.15s;
-}
-
-.tgp-color-dot.active {
-    border-color: #fff;
-    transform: scale(1.15);
-}
-
-/* User row */
-.tgp-header__user {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.tgp-header__info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.tgp-header__greeting {
-    font-size: 12px;
-    opacity: 0.8;
-}
-
-.tgp-header__name {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.2;
-}
-
-.tgp-header__username {
-    font-size: 12px;
-    opacity: 0.7;
-}
-
-/* ── Avatar ── */
-.tgp-avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: 72px;
-    height: 72px;
-}
-
-.tgp-avatar img {
-    width: 72px;
-    height: 72px;
+.tgl-avatar {
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(255,255,255,0.4);
+    border: 3px solid #f4f5f7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.tgp-avatar__placeholder {
-    width: 72px;
-    height: 72px;
+.tgl-avatar-placeholder {
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.25);
-    color: #fff;
-    font-size: 26px;
-    font-weight: 700;
+    background: #007AFF;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid rgba(255,255,255,0.4);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
 }
 
-.tgp-avatar__badge {
+.tgl-success-badge {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 22px;
-    height: 22px;
-    background: #2D7A4F;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
+    bottom: -2px;
+    right: -2px;
+    width: 26px;
+    height: 26px;
+    background: #34C759;
+    color: #ffffff;
     border-radius: 50%;
+    font-size: 13px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #fff;
+    border: 3px solid #ffffff;
 }
 
-.tgp-new-badge {
-    font-size: 11px;
-    background: rgba(255,255,255,0.25);
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-bottom: 2px;
+/* ── Typography & Badges ── */
+.tgl-badge {
     display: inline-block;
-}
-
-/* ── Body ── */
-.tgp-body {
-    padding: 20px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-/* ── Menu ── */
-.tgp-menu {
-    background: #fafafa;
-    border: 1px solid #f0eaf8;
-    border-radius: 14px;
-    overflow: hidden;
-}
-
-.tgp-menu-item {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px;
-    background: none;
-    border: none;
-    border-bottom: 1px solid #f0eaf8;
-    cursor: pointer;
-    transition: background 0.15s;
-    text-align: left;
-}
-
-.tgp-menu-item:last-child { border-bottom: none; }
-.tgp-menu-item:hover { background: #f7f2fc; }
-
-.tgp-menu-item__icon { font-size: 20px; flex-shrink: 0; }
-
-.tgp-menu-item__label {
-    flex: 1;
-    font-size: 15px;
-    font-weight: 500;
-    color: #111;
-}
-
-.tgp-menu-item__arrow {
-    font-size: 20px;
-    color: #ccc;
-    font-weight: 300;
-}
-
-/* ── Language ── */
-.tgp-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.tgp-section__label {
-    font-size: 12px;
+    padding: 6px 14px;
+    background: #f2f2f7;
+    color: #1c1c1e;
+    font-size: 13px;
     font-weight: 600;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding-left: 4px;
+    border-radius: 20px;
+    margin-bottom: 12px;
 }
 
-.tgp-lang-btns {
-    display: flex;
-    gap: 10px;
+.tgl-badge--success {
+    background: #34c7591c;
+    color: #34C759;
 }
 
-.tgp-lang-btn {
-    flex: 1;
-    padding: 12px;
-    background: #fafafa;
-    border: 1.5px solid #ede8f5;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #555;
-    cursor: pointer;
-    transition: all 0.15s;
-}
-
-.tgp-lang-btn.active {
-    background: #f0eaf8;
-    border-color: #5B2D8E;
-    color: #5B2D8E;
+.tgl-title {
+    font-size: 24px;
     font-weight: 700;
+    color: #1c1c1e;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
 }
 
-/* ── Logout ── */
-.tgp-logout-btn {
-    width: 100%;
-    padding: 14px;
-    background: #fdecea;
-    color: #c0392b;
-    border: 1.5px solid #f5c6c6;
-    border-radius: 14px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.tgp-logout-btn:hover { background: #fbd5d5; }
-
-/* ── Create ── */
-.tgp-create-desc {
+.tgl-subtitle {
     font-size: 14px;
-    color: #888;
-    text-align: center;
-    line-height: 1.6;
-    margin: 0;
+    color: #8e8e93;
+    margin: 0 0 24px 0;
+    line-height: 1.4;
 }
 
-.tgp-create-btn {
+/* ── Info Box ── */
+.tgl-info-list {
     width: 100%;
-    padding: 15px;
-    background: #5B2D8E;
-    color: #fff;
+    background: #f2f2f7;
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tgl-info-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.tgl-label {
+    color: #8e8e93;
+}
+
+.tgl-value {
+    font-weight: 600;
+    color: #1c1c1e;
+}
+
+/* ── Buttons ── */
+.tgl-btn {
+    width: 100%;
+    padding: 16px;
     border: none;
-    border-radius: 14px;
+    border-radius: 16px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.2s ease;
 }
 
-.tgp-create-btn:hover { background: #4a2175; }
+.tgl-btn--primary {
+    background: #007AFF;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 122, 255, 0.24);
+}
 
-/* ── Loading ── */
-.tgp-loading {
+.tgl-btn--primary:active {
+    background: #0062cc;
+    transform: scale(0.98);
+}
+
+.tgl-btn--success {
+    background: #34C759;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(52, 199, 89, 0.24);
+}
+
+.tgl-btn--success:active {
+    background: #28a745;
+    transform: scale(0.98);
+}
+
+.tgl-footer-note {
+    font-size: 12px;
+    color: #c7c7cc;
+    margin: 16px 0 0 0;
+    line-height: 1.3;
+}
+
+/* ── Loading Spinner Screen ── */
+.tgl-loading {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 12px;
-    height: 100vh;
-    color: #888;
+    color: #8e8e93;
     font-size: 14px;
 }
 
-.tgp-spinner {
+.tgl-spinner {
     width: 36px;
     height: 36px;
-    border: 3px solid #f0eaf8;
-    border-top-color: #5B2D8E;
+    border: 3px solid #e5e5ea;
+    border-top-color: #007AFF;
     border-radius: 50%;
-    animation: tgp-spin 0.7s linear infinite;
+    animation: tgl-spin 0.7s linear infinite;
 }
 
-@keyframes tgp-spin { to { transform: rotate(360deg); } }
-
-/* ── Not TG ── */
-.tgp-not-tg {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    height: 100vh;
-    text-align: center;
-    padding: 24px;
+.tgl-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
 }
 
-.tgp-not-tg span { font-size: 48px; }
-.tgp-not-tg h3 { font-size: 18px; font-weight: 700; color: #111; margin: 0; }
-.tgp-not-tg p { font-size: 14px; color: #888; margin: 0; line-height: 1.5; }
+@keyframes tgl-spin {
+    to { transform: rotate(360deg); }
+}

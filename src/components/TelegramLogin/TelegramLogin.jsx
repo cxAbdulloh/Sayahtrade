@@ -6,28 +6,35 @@ import "./TelegramLogin.css";
 
 export default function TelegramLogin() {
     const { tgUser, loading } = useTelegramAuth();
-    const [status, setStatus] = useState("idle");
+    const [status, setStatus] = useState("idle"); // idle, loading, new, existing, registered, error
 
+    // ── FOYDALANUVCHINI TEKSHIRISH ──
     useEffect(() => {
         if (!tgUser) return;
+
         const checkUser = async () => {
             setStatus("loading");
             try {
                 const userRef = doc(db, "telegram_users", String(tgUser.id));
                 const existing = await getDoc(userRef);
+
                 if (existing.exists()) {
                     setStatus("existing");
+                    // Agar foydalanuvchi bazada bo'lsa, oxirgi kirgan vaqtini yangilaymiz
                     await setDoc(userRef, { lastSeen: serverTimestamp() }, { merge: true });
                 } else {
-                    setStatus("new");
+                    setStatus("new"); // Foydalanuvchi bazada yo'q -> Registratsiya kerak
                 }
-            } catch {
+            } catch (error) {
+                console.error("Xatolik yuz berdi:", error);
                 setStatus("error");
             }
         };
+
         checkUser();
     }, [tgUser]);
 
+    // ── REGISTRATSIYA QILISH (BAZAGA YOZISH) ──
     const handleRegister = async () => {
         if (!tgUser) return;
         setStatus("loading");
@@ -36,36 +43,39 @@ export default function TelegramLogin() {
             await setDoc(userRef, {
                 telegramId: tgUser.id,
                 firstName: tgUser.firstName,
-                lastName: tgUser.lastName,
-                username: tgUser.username,
-                photoUrl: tgUser.photoUrl,
+                lastName: tgUser.lastName || "",
+                username: tgUser.username || "",
+                photoUrl: tgUser.photoUrl || "",
                 createdAt: serverTimestamp(),
                 lastSeen: serverTimestamp(),
             });
             setStatus("registered");
-        } catch {
+        } catch (error) {
+            console.error("Registratsiyada xatolik:", error);
             setStatus("error");
         }
     };
 
+    // 1. Yuklanish holati (Spinner)
     if (loading || status === "idle" || status === "loading") {
         return (
-            <div className="tg-login">
-                <div className="tg-login__loading">
-                    <div className="tg-login__spinner" />
-                    <span>Загрузка...</span>
+            <div className="tgl-container">
+                <div className="tgl-loading">
+                    <div className="tgl-spinner" />
+                    <span>Загрузка данных...</span>
                 </div>
             </div>
         );
     }
 
-    if (!tgUser) {
+    // 2. Telegramdan tashqarida ochilgandagi holat
+    if (!tgUser || status === "error") {
         return (
-            <div className="tg-login">
-                <div className="tg-login__not-tg">
-                    <div className="tg-login__icon">📱</div>
-                    <h3>Откройте в Telegram</h3>
-                    <p>Это приложение доступно только через Telegram Mini App</p>
+            <div className="tgl-container">
+                <div className="tgl-card tgl-card--error">
+                    <div className="tgl-icon">📱</div>
+                    <h3>Вход ограничен</h3>
+                    <p>Пожалуйста, откройте приложение через официальный Telegram Mini App бот.</p>
                 </div>
             </div>
         );
@@ -75,73 +85,71 @@ export default function TelegramLogin() {
     const initials = [tgUser.firstName?.[0], tgUser.lastName?.[0]]
         .filter(Boolean).join("").toUpperCase() || "U";
 
-    // ── Yangi foydalanuvchi — Register ──
+    // 3. YANGI FOYDALANUVCHI — Registratsiya oynasi
     if (status === "new") {
         return (
-            <div className="tg-login">
-                <div className="tg-login__card">
-                    <div className="tg-login__avatar">
-                        {tgUser.photoUrl
-                            ? <img src={tgUser.photoUrl} alt={fullName} />
-                            : <div className="tg-login__avatar-placeholder">{initials}</div>
-                        }
+            <div className="tgl-container">
+                <div className="tgl-card">
+                    <div className="tgl-avatar-wrap">
+                        {tgUser.photoUrl ? (
+                            <img src={tgUser.photoUrl} alt={fullName} className="tgl-avatar" />
+                        ) : (
+                            <div className="tgl-avatar-placeholder">{initials}</div>
+                        )}
                     </div>
-                    <div className="tg-login__welcome">
-                        <span className="tg-login__greeting">Привет, {tgUser.firstName}! 👋</span>
-                        <h2 className="tg-login__name">{fullName}</h2>
-                        {tgUser.username && <span className="tg-login__username">@{tgUser.username}</span>}
+
+                    <div className="tgl-welcome">
+                        <span className="tgl-badge">👋 Привет, {tgUser.firstName}!</span>
+                        <h2 className="tgl-title">Создание аккаунта</h2>
+                        <p className="tgl-subtitle">Для доступа к магазину необходимо подтвердить профиль.</p>
                     </div>
-                    <div className="tg-login__register-info">
-                        <div className="tg-login__info-item">
-                            <span className="tg-login__info-label">Telegram ID</span>
-                            <span className="tg-login__info-value">{tgUser.id}</span>
+
+                    <div className="tgl-info-list">
+                        <div className="tgl-info-item">
+                            <span className="tgl-label">Имя профиля</span>
+                            <span className="tgl-value">{fullName}</span>
                         </div>
                         {tgUser.username && (
-                            <div className="tg-login__info-item">
-                                <span className="tg-login__info-label">Username</span>
-                                <span className="tg-login__info-value">@{tgUser.username}</span>
+                            <div className="tgl-info-item">
+                                <span className="tgl-label">Username</span>
+                                <span className="tgl-value">@{tgUser.username}</span>
                             </div>
                         )}
                     </div>
-                    <button className="tg-login__btn" onClick={handleRegister}>
+
+                    <button className="tgl-btn tgl-btn--primary" onClick={handleRegister}>
                         Создать аккаунт
                     </button>
-                    <p className="tg-login__note">Данные берутся из вашего Telegram профиля</p>
+                    <p className="tgl-footer-note">Данные автоматически синхронизируются с вашим Telegram</p>
                 </div>
             </div>
         );
     }
 
-    // ── Akkaunt bor yoki register qilindi — faqat "Перейти в магазин" ──
+    // 4. ESKI FOYDALANUVCHI yoki HOZIRGINA RO'YXATDAN O'TGAN — Do'konga kirish oynasi
     return (
-        <div className="tg-login">
-            <div className="tg-login__card">
-                <div className="tg-login__avatar">
-                    {tgUser.photoUrl
-                        ? <img src={tgUser.photoUrl} alt={fullName} />
-                        : <div className="tg-login__avatar-placeholder">{initials}</div>
-                    }
-                    <div className="tg-login__avatar-badge">✓</div>
-                </div>
-                <div className="tg-login__welcome">
-                    {status === "registered" && (
-                        <span className="tg-login__new-badge">🎉 Аккаунт создан!</span>
+        <div className="tgl-container">
+            <div className="tgl-card">
+                <div className="tgl-avatar-wrap">
+                    {tgUser.photoUrl ? (
+                        <img src={tgUser.photoUrl} alt={fullName} className="tgl-avatar" />
+                    ) : (
+                        <div className="tgl-avatar-placeholder">{initials}</div>
                     )}
-                    <span className="tg-login__greeting">Добро пожаловать!</span>
-                    <h2 className="tg-login__name">{fullName}</h2>
-                    {tgUser.username && <span className="tg-login__username">@{tgUser.username}</span>}
+                    <div className="tgl-success-badge">✓</div>
                 </div>
-                <div className="tg-login__register-info">
-                    <div className="tg-login__info-item">
-                        <span className="tg-login__info-label">Telegram ID</span>
-                        <span className="tg-login__info-value">{tgUser.id}</span>
-                    </div>
-                    <div className="tg-login__info-item">
-                        <span className="tg-login__info-label">Статус</span>
-                        <span className="tg-login__info-value" style={{color: "#2D7A4F"}}>✓ Активен</span>
-                    </div>
+
+                <div className="tgl-welcome">
+                    {status === "registered" ? (
+                        <span className="tgl-badge tgl-badge--success">🎉 Успешно зарегистрирован!</span>
+                    ) : (
+                        <span className="tgl-badge"> рады видеть вас снова!</span>
+                    )}
+                    <h2 className="tgl-title">{fullName}</h2>
+                    <p className="tgl-subtitle">Ваш аккаунт успешно авторизован.</p>
                 </div>
-                <button className="tg-login__btn" onClick={() => window.location.href = "/"}>
+
+                <button className="tgl-btn tgl-btn--success" onClick={() => window.location.href = "/shop"}>
                     Перейти в магазин
                 </button>
             </div>

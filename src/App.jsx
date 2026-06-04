@@ -12,6 +12,7 @@ import AboutUs from "./pages/AboutUs/AboutUs.jsx";
 import WheretoBuy from "./pages/WheretoBuy/WheretoBuy.jsx";
 import Blog from "./pages/Blog/Blog.jsx";
 import TelegramLogin from "./components/TelegramLogin/TelegramLogin.jsx";
+import TelegramProfile from "./components/TelegramProfile/TelegramProfile.jsx";
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                 <Route path="/wheretobuy" element={<WheretoBuy/>} />
                 <Route path="/blog" element={<Blog/>} />
                 <Route path="/tg-login" element={<TelegramLogin/>} />
+                <Route path="/tg-profile" element={<TelegramProfile/>} />
             </Routes>
             <Footer />
             <NavBottom />
