@@ -3,6 +3,7 @@ import { useTelegramAuth } from "../../hooks/useTelegramAuth.js";
 import { db } from "../../firebase/firebase.js";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import "./TelegramLogin.css";
+import {Link} from "react-router-dom";
 
 export default function TelegramLogin() {
     const { tgUser, loading } = useTelegramAuth();
@@ -193,12 +194,12 @@ export default function TelegramLogin() {
                 </div>
 
                 {/* CTA */}
-                <button
+                <Link to="/shop"
                     className="tg-login__btn"
                     onClick={() => window.Telegram?.WebApp?.close()}
                 >
                     Перейти в магазин
-                </button>
+                </Link>
 
             </div>
         </div>

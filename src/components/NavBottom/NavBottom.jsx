@@ -29,7 +29,7 @@ export default function NavBottom({ cartCount = 0 }) {
                     )}
                 </button>
 
-                <Link to="/my-account" className="bottom-nav__item">
+                <Link to="/tg-login" className="bottom-nav__item">
                     <img src={assets.icon_3} width={24} />
                     <span>Мой аккаунт</span>
                 </Link>
