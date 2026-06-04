@@ -11,6 +11,7 @@ import ContactWithUs from "./pages/ContactWithUs/ContactWithUs.jsx";
 import AboutUs from "./pages/AboutUs/AboutUs.jsx";
 import WheretoBuy from "./pages/WheretoBuy/WheretoBuy.jsx";
 import Blog from "./pages/Blog/Blog.jsx";
+import TelegramLogin from "./components/TelegramLogin/TelegramLogin.jsx";
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
                 <Route path="/about" element={<AboutUs/>} />
                 <Route path="/wheretobuy" element={<WheretoBuy/>} />
                 <Route path="/blog" element={<Blog/>} />
+                <Route path="/tg-login" element={<TelegramLogin/>} />
             </Routes>
             <Footer />
             <NavBottom />
